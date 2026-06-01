@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio — Henzo Ho Foui Sang Lerandy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+        --bg:      #080810;
+        --bg2:     #0e0e1c;
+        --card:    #12122a;
+        --a1:      #4f9cf9;
+        --a2:      #7c3aed;
+        --a3:      #06b6d4;
+        --txt:     #f0f0f8;
+        --txt2:    #8888aa;
+        --txt3:    #505068;
+        --border:  rgba(255,255,255,0.07);
+        --grad:    linear-gradient(135deg, var(--a1), var(--a2));
+        /* Compétences */
+        --maint:   #4f9cf9;
+        --inst:    #f59e0b;
+        --conc:    #a855f7;
+        --veri:    #10b981;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--txt); overflow-x: hidden; line-height: 1.6; }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--a1); border-radius: 3px; }
+
+    /* ── NAV ─────────────────────────────────────────── */
+    nav {
+        position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+        padding: 1rem 3rem;
+        display: flex; align-items: center; justify-content: space-between;
+        background: rgba(8,8,16,0.9); backdrop-filter: blur(24px);
+        border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+        font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.5rem;
+        background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        background-clip: text; text-decoration: none;
+    }
+    .nav-back {
+        display: flex; align-items: center; gap: 8px; color: var(--txt2);
+        text-decoration: none; font-size: 0.86rem; font-weight: 600;
+        padding: 7px 17px; border: 1px solid var(--border); border-radius: 20px;
+        background: var(--card); transition: all 0.3s;
+    }
+    .nav-back:hover { color: var(--a1); border-color: rgba(79,156,249,0.35); }
+    .nav-back svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
+    .lang-toggle { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 4px; display: flex; }
+    .lang-btn {
+        background: none; border: none; color: var(--txt2); padding: 4px 14px; border-radius: 16px;
+        cursor: pointer; font-size: 0.8rem; font-weight: 700; transition: all 0.3s;
+        font-family: 'Inter', sans-serif; letter-spacing: 0.5px;
+    }
+    .lang-btn.active { background: var(--grad); color: #fff; }
+
+    /* ── HERO (compact) ─────────────────────────────── */
+    .p-hero {
+        padding: 9rem 2rem 5rem; text-align: center;
+        background:
+            radial-gradient(ellipse 80% 60% at 50% 0%, rgba(79,156,249,0.1) 0%, transparent 60%),
+            radial-gradient(ellipse 50% 45% at 80% 55%, rgba(168,85,247,0.09) 0%, transparent 55%);
+        position: relative; overflow: hidden;
+    }
+    .p-hero::before {
+        content: ''; position: absolute; inset: 0;
+        background-image:
+            linear-gradient(rgba(79,156,249,0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(79,156,249,0.03) 1px, transparent 1px);
+        background-size: 55px 55px;
+        mask-image: radial-gradient(ellipse 70% 80% at 50% 50%, black 30%, transparent 100%);
+    }
+    .p-hero-inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+    .p-hero-badge {
+        display: inline-flex; align-items: center; gap: 9px;
+        background: rgba(168,85,247,0.1); border: 1px solid rgba(168,85,247,0.25);
+        border-radius: 30px; padding: 6px 18px; font-size: 0.8rem; color: var(--conc);
+        margin-bottom: 1.5rem; font-weight: 500;
+    }
+    .p-hero h1 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: clamp(2.6rem, 7vw, 4.8rem); font-weight: 800; line-height: 1.08;
+        margin-bottom: 1rem;
+    }
+    .hl-grad { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .p-hero-sub { color: var(--txt2); font-size: 1rem; max-width: 520px; margin: 0 auto 2.5rem; }
+
+    /* Comp pills */
+    .comp-pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.7rem; }
+    .cp { padding: 10px 22px; border-radius: 24px; border: 1px solid; font-weight: 700; font-size: 0.88rem; cursor: pointer; text-decoration: none; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; }
+    .cp:hover { transform: translateY(-3px); }
+    .cp.maint { color: var(--maint); border-color: rgba(79,156,249,0.3);  background: rgba(79,156,249,0.07); }
+    .cp.maint:hover { background: rgba(79,156,249,0.15); box-shadow: 0 8px 28px rgba(79,156,249,0.2); }
+    .cp.inst  { color: var(--inst);  border-color: rgba(245,158,11,0.3); background: rgba(245,158,11,0.07); }
+    .cp.inst:hover  { background: rgba(245,158,11,0.15); box-shadow: 0 8px 28px rgba(245,158,11,0.2); }
+    .cp.conc  { color: var(--conc);  border-color: rgba(168,85,247,0.3); background: rgba(168,85,247,0.07); }
+    .cp.conc:hover  { background: rgba(168,85,247,0.15); box-shadow: 0 8px 28px rgba(168,85,247,0.2); }
+    .cp.veri  { color: var(--veri);  border-color: rgba(16,185,129,0.3); background: rgba(16,185,129,0.07); }
+    .cp.veri:hover  { background: rgba(16,185,129,0.15); box-shadow: 0 8px 28px rgba(16,185,129,0.2); }
+
+    /* ── STICKY TABS ─────────────────────────────────── */
+    .comp-tabs {
+        position: sticky; top: 0; z-index: 500;
+        background: rgba(8,8,16,0.93); backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border);
+        display: flex; justify-content: center; gap: 0.4rem; padding: 0.75rem 2rem;
+        flex-wrap: wrap;
+    }
+    .ct {
+        padding: 8px 22px; border-radius: 22px; border: 1px solid var(--border);
+        background: transparent; color: var(--txt2); cursor: pointer; font-weight: 600;
+        font-size: 0.88rem; font-family: 'Inter', sans-serif; transition: all 0.3s;
+        display: flex; align-items: center; gap: 7px;
+    }
+    .ct:hover { color: var(--txt); border-color: rgba(255,255,255,0.14); }
+    .ct[data-c="maint"].on { background: rgba(79,156,249,0.12);  border-color: rgba(79,156,249,0.4);  color: var(--maint); }
+    .ct[data-c="inst"].on  { background: rgba(245,158,11,0.12);  border-color: rgba(245,158,11,0.4);  color: var(--inst); }
+    .ct[data-c="conc"].on  { background: rgba(168,85,247,0.12);  border-color: rgba(168,85,247,0.4);  color: var(--conc); }
+    .ct[data-c="veri"].on  { background: rgba(16,185,129,0.12);  border-color: rgba(16,185,129,0.4);  color: var(--veri); }
+
+    /* ── SECTIONS ─────────────────────────────────────── */
+    .comp-sec { padding: 5.5rem 2rem; scroll-margin-top: 104px; }
+    .comp-sec:nth-child(even) { background: var(--bg2); }
+    .sw { max-width: 1100px; margin: 0 auto; }
+    .sec-head { margin-bottom: 3rem; }
+    .sec-lbl {
+        display: inline-flex; align-items: center; gap: 9px;
+        font-size: 0.72rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
+        padding: 5px 16px; border-radius: 20px; margin-bottom: 1rem; border: 1px solid;
+    }
+    .sec-lbl.maint { color: var(--maint); background: rgba(79,156,249,0.08); border-color: rgba(79,156,249,0.2); }
+    .sec-lbl.inst  { color: var(--inst);  background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.2); }
+    .sec-lbl.conc  { color: var(--conc);  background: rgba(168,85,247,0.08); border-color: rgba(168,85,247,0.2); }
+    .sec-lbl.veri  { color: var(--veri);  background: rgba(16,185,129,0.08); border-color: rgba(16,185,129,0.2); }
+    .sec-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; margin-bottom: 0.7rem; line-height: 1.15; }
+    .hl-m { background: linear-gradient(135deg, var(--maint), #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hl-i { background: linear-gradient(135deg, var(--inst), #ef4444);  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hl-c { background: linear-gradient(135deg, var(--conc), var(--a1)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hl-v { background: linear-gradient(135deg, var(--veri), #06b6d4);  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .sec-desc { color: var(--txt2); font-size: 0.97rem; max-width: 620px; line-height: 1.75; }
+
+    /* ── PORTFOLIO CARDS ─────────────────────────────── */
+    .port-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    @media (max-width: 1024px) { .port-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px)  { .port-grid { grid-template-columns: 1fr; } }
+
+    .pc {
+        border-radius: 22px; background: var(--card); border: 1px solid var(--border);
+        overflow: hidden; transition: all 0.35s; position: relative;
+    }
+    .pc::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+    .pc.maint::before { background: linear-gradient(90deg, var(--maint), #06b6d4); }
+    .pc.inst::before  { background: linear-gradient(90deg, var(--inst),  #ef4444); }
+    .pc.conc::before  { background: linear-gradient(90deg, var(--conc),  var(--a1)); }
+    .pc.veri::before  { background: linear-gradient(90deg, var(--veri),  #06b6d4); }
+    .pc:hover { transform: translateY(-6px); border-color: rgba(255,255,255,0.12); box-shadow: 0 16px 50px rgba(0,0,0,0.35); }
+    .pc.feat  { grid-column: span 2; }
+    @media (max-width: 640px) { .pc.feat { grid-column: span 1; } }
+
+    /* Card image */
+    .pc-img { width: 100%; height: 200px; background: rgba(255,255,255,0.03); position: relative; overflow: hidden; }
+    .pc.feat .pc-img { height: 258px; }
+    .pc-img img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0; transition: opacity 0.45s ease; }
+    .pc-img img.active { opacity: 1; }
+    .pc-img:has(img) .pc-iph { display: none; }
+    .pc-img:has(img) { cursor: zoom-in; }
+
+    /* Expand hint */
+    .lbx-hint {
+        position: absolute; bottom: 8px; left: 8px; z-index: 11;
+        background: rgba(8,8,16,0.65); color: rgba(255,255,255,0.55);
+        font-size: 0.65rem; font-weight: 600; padding: 2px 9px; border-radius: 9px;
+        display: flex; align-items: center; gap: 4px;
+        opacity: 0; transition: opacity 0.25s; pointer-events: none; letter-spacing: 0.3px;
+        backdrop-filter: blur(4px);
+    }
+    .pc-img:hover .lbx-hint { opacity: 1; }
+    .lbx-hint svg { width: 10px; height: 10px; flex-shrink: 0; }
+
+    /* ── LIGHTBOX ───────────────────────────────────── */
+    .lbx {
+        position: fixed; inset: 0; z-index: 9000;
+        background: rgba(4,4,12,0.94); backdrop-filter: blur(16px);
+        display: none; align-items: center; justify-content: center;
+        padding: 5rem 1.5rem 4rem;
+        opacity: 0; transition: opacity 0.25s ease;
+    }
+    .lbx.open { display: flex; }
+    .lbx.visible { opacity: 1; }
+    .lbx-img-wrap { max-width: 92vw; max-height: 82vh; display: flex; align-items: center; justify-content: center; }
+    .lbx-img {
+        max-width: 92vw; max-height: 82vh; object-fit: contain;
+        border-radius: 6px; box-shadow: 0 32px 90px rgba(0,0,0,0.75);
+        display: block; transform: scale(0.96); transition: transform 0.25s ease;
+    }
+    .lbx.visible .lbx-img { transform: scale(1); }
+    .lbx-close {
+        position: fixed; top: 1.1rem; right: 1.3rem; z-index: 9010;
+        width: 38px; height: 38px; border-radius: 50%; cursor: pointer;
+        background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16);
+        color: #fff; display: flex; align-items: center; justify-content: center;
+        transition: background 0.2s; backdrop-filter: blur(8px);
+    }
+    .lbx-close:hover { background: rgba(255,255,255,0.18); }
+    .lbx-close svg { width: 16px; height: 16px; }
+    .lbx-nav {
+        position: fixed; top: 50%; transform: translateY(-50%); z-index: 9010;
+        width: 46px; height: 46px; border-radius: 50%; cursor: pointer;
+        background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16);
+        color: #fff; display: flex; align-items: center; justify-content: center;
+        transition: background 0.2s, border-color 0.2s; backdrop-filter: blur(8px);
+    }
+    .lbx-nav:hover { background: rgba(79,156,249,0.28); border-color: rgba(79,156,249,0.5); }
+    .lbx-nav svg { width: 18px; height: 18px; }
+    .lbx-prev { left: 1.1rem; }
+    .lbx-next { right: 1.1rem; }
+    .lbx-counter {
+        position: fixed; bottom: 1.3rem; left: 50%; transform: translateX(-50%); z-index: 9010;
+        background: rgba(8,8,16,0.7); color: rgba(255,255,255,0.6);
+        font-size: 0.78rem; font-weight: 600; padding: 4px 18px; border-radius: 20px;
+        letter-spacing: 0.5px; backdrop-filter: blur(8px);
+    }
+
+    /* Carousel controls */
+    .car-btn {
+        position: absolute; top: 50%; transform: translateY(-50%); z-index: 10;
+        width: 30px; height: 30px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.15);
+        background: rgba(8,8,16,0.65); backdrop-filter: blur(6px);
+        color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center;
+        opacity: 0; transition: opacity 0.25s, background 0.25s; padding: 0;
+    }
+    .pc-img:hover .car-btn { opacity: 1; }
+    .car-btn:hover { background: rgba(79,156,249,0.45); border-color: rgba(79,156,249,0.5); }
+    .car-btn svg { width: 12px; height: 12px; flex-shrink: 0; }
+    .car-prev { left: 8px; }
+    .car-next { right: 8px; }
+    .car-dots {
+        position: absolute; bottom: 9px; left: 50%; transform: translateX(-50%);
+        display: flex; gap: 5px; z-index: 10;
+    }
+    .car-dot {
+        width: 6px; height: 6px; border-radius: 50%;
+        background: rgba(255,255,255,0.35); cursor: pointer; transition: all 0.3s;
+    }
+    .car-dot.on { background: #fff; transform: scale(1.25); }
+    .car-count {
+        position: absolute; top: 8px; right: 8px; z-index: 10;
+        background: rgba(8,8,16,0.6); color: rgba(255,255,255,0.65);
+        font-size: 0.68rem; font-weight: 600; padding: 2px 9px; border-radius: 10px;
+        letter-spacing: 0.5px;
+    }
+    .pc-iph { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; color: var(--txt3); font-size: 0.73rem; text-align: center; }
+    .pc-iph svg { width: 30px; height: 30px; opacity: 0.14; }
+
+    /* Card body */
+    .pc-body { padding: 1.4rem 1.5rem 1.6rem; }
+    .pc-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 0.69rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 11px; border-radius: 16px; margin-bottom: 0.8rem; border: 1px solid; }
+    .pc-badge.maint { color: var(--maint); background: rgba(79,156,249,0.1); border-color: rgba(79,156,249,0.25); }
+    .pc-badge.inst  { color: var(--inst);  background: rgba(245,158,11,0.1);  border-color: rgba(245,158,11,0.25); }
+    .pc-badge.conc  { color: var(--conc);  background: rgba(168,85,247,0.1);  border-color: rgba(168,85,247,0.25); }
+    .pc-badge.veri  { color: var(--veri);  background: rgba(16,185,129,0.1);  border-color: rgba(16,185,129,0.25); }
+    .pc-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.08rem; font-weight: 700; line-height: 1.3; margin-bottom: 0.5rem; }
+    .pc.feat .pc-title { font-size: 1.2rem; }
+    .pc-desc { font-size: 0.875rem; color: var(--txt2); line-height: 1.75; margin-bottom: 1rem; }
+    .pc-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .pc-tag { background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 8px; padding: 4px 11px; font-size: 0.78rem; color: var(--txt3); }
+    .pc-date { font-size: 0.76rem; color: var(--txt3); margin-top: 0.75rem; }
+
+    /* ── ANIMATIONS ─────────────────────────────────── */
+    .anim { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .anim.d1 { transition-delay: 0.05s; } .anim.d2 { transition-delay: 0.13s; }
+    .anim.d3 { transition-delay: 0.21s; } .anim.d4 { transition-delay: 0.29s; }
+    .anim.show { opacity: 1; transform: translateY(0); }
+
+    /* ── FOOTER ──────────────────────────────────────── */
+    footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3rem 2rem; text-align: center; }
+    .ft-back {
+        display: inline-flex; align-items: center; gap: 9px;
+        background: var(--grad); color: #fff; padding: 13px 30px; border-radius: 30px;
+        text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: all 0.3s; margin-bottom: 1.5rem;
+    }
+    .ft-back:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(79,156,249,0.3); }
+    .ft-back svg { width: 15px; height: 15px; }
+    footer p { color: var(--txt3); font-size: 0.82rem; }
+
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 700px) {
+        nav { padding: 1rem 1.2rem; }
+        .comp-tabs { gap: 0.3rem; padding: 0.6rem 0.8rem; }
+        .ct { padding: 7px 13px; font-size: 0.8rem; }
+        .p-hero { padding: 7rem 1.2rem 3.5rem; }
+    }
+    </style>
+</head>
+<body>
+
+<!-- ── NAV ──────────────────────────────────────────── -->
+<nav>
+    <a href="index.html" class="nav-logo">H.</a>
+    <a href="index.html" class="nav-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        <span data-i18n="nav_back">Retour au CV</span>
+    </a>
+    <div class="nav-right">
+        <div class="lang-toggle">
+            <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+            <button class="lang-btn"        onclick="setLang('en')">EN</button>
+        </div>
+    </div>
+</nav>
+
+
+<!-- ── HERO ─────────────────────────────────────────── -->
+<div class="p-hero">
+    <div class="p-hero-inner">
+        <div class="p-hero-badge">✦ <span data-i18n="hero_lbl">BUT GEII · 4 Compétences</span></div>
+        <h1><span data-i18n="hero_t1">Mon</span> <span class="hl-grad" data-i18n="hero_t2">Portfolio</span></h1>
+        <p class="p-hero-sub" data-i18n="hero_sub">Réalisations académiques et professionnelles, organisées par compétence.</p>
+        <div class="comp-pills">
+            <a href="#maintenir" class="cp maint">🔧 <span data-i18n="t_maint">Maintenir</span></a>
+            <a href="#installer" class="cp inst">⚡ <span data-i18n="t_inst">Installer</span></a>
+            <a href="#concevoir" class="cp conc">🤖 <span data-i18n="t_conc">Concevoir</span></a>
+            <a href="#verifier"  class="cp veri">✅ <span data-i18n="t_veri">Vérifier</span></a>
+        </div>
+    </div>
+</div>
+
+
+<!-- ── STICKY TABS ───────────────────────────────────── -->
+<div class="comp-tabs">
+    <button class="ct" data-c="maint" onclick="goTo('maintenir')">🔧 <span data-i18n="t_maint">Maintenir</span></button>
+    <button class="ct" data-c="inst"  onclick="goTo('installer')">⚡ <span data-i18n="t_inst">Installer</span></button>
+    <button class="ct" data-c="conc"  onclick="goTo('concevoir')">🤖 <span data-i18n="t_conc">Concevoir</span></button>
+    <button class="ct" data-c="veri"  onclick="goTo('verifier')">✅ <span data-i18n="t_veri">Vérifier</span></button>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- ── 1. MAINTENIR ──────────────────────────────── -->
+<section class="comp-sec" id="maintenir">
+<div class="sw">
+    <div class="sec-head anim">
+        <div class="sec-lbl maint">🔧 <span data-i18n="t_maint">Maintenir</span></div>
+        <h2 class="sec-title">
+            <span data-i18n="m_t1">Maintenance &amp; </span><span class="hl-m" data-i18n="m_t2">Exploitation</span>
+        </h2>
+        <p class="sec-desc" data-i18n="m_desc">Supervision, maintenance préventive et curative de systèmes énergétiques industriels critiques.</p>
+    </div>
+    <div class="port-grid">
+
+        <!-- IDEX Biomasse (featured) -->
+        <div class="pc maint feat anim d1">
+            <div class="pc-img">
+                <!--
+                    📸 Ajoute ici autant d'<img> que tu veux — le carrousel se crée automatiquement
+                    dès qu'il y a 2+ images. Une seule image = aucun contrôle affiché.
+                -->
+                <img src="idex-biomasse.jpg" alt="Centrale Biomasse IDEX — vue générale">
+                <img src="idex-biomasse-2.jpg" alt="Centrale Biomasse IDEX — Demande d'intervention"> 
+                 <img src="idex-biomasse-3.jpg" alt="Centrale Biomasse IDEX — Planning de maintenance"> 
+                 <img src="idex-biomasse-4.jpg" alt="Centrale Biomasse IDEX — Couteaux"> 
+                <!-- <img src="idex-biomasse-3.jpg" alt="Centrale Biomasse IDEX — turbine"> -->
+                <!-- <img src="idex-biomasse-3.jpg" alt="Centrale Biomasse IDEX — turbine"> -->
+                <div class="pc-iph">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    idex-biomasse.jpg
+                </div>
+            </div>
+            <div class="pc-body">
+                <div class="pc-badge maint" data-i18n="b_alt">🏭 Alternance</div>
+                <div class="pc-title" data-i18n="m1_t">Centrale Biomasse IDEX — Montsinéry</div>
+                <p class="pc-desc" data-i18n="m1_d">Réaliser le tableau de suivi des maintenances d'une centrale biomasse 20 MWth / 5 MWe, classé par groupe fonctionnel, équipement, fréquence et type d'intervention. Participer aux maintenances curatives (débourrages, changements de vannes et de moteurs) et préventives (remplacement des couteaux du broyeur). Créer le fichier de demande d'interventions et son tableau de suivi pour centraliser et tracer l'ensemble des actions correctives réalisées.</p>
+                <div class="pc-tags">
+                    <span class="pc-tag">GMAO</span>
+                    <span class="pc-tag" data-i18n="tk_prev">Maintenance préventive</span>
+                    <span class="pc-tag">Curative</span>
+                    <span class="pc-tag">20 MWth / 5 MWe</span>
+                    <span class="pc-tag">Biomasse</span>
+                </div>
+                <div class="pc-date">Oct. 2024 – Mars 2026</div>
+            </div>
+        </div>
+
+        <!-- IDEX Space -->
+        <div class="pc maint anim d2">
+            <div class="pc-img">
+                <img src="idex-space2.jpg" alt="IDEX Space — CHOG"> 
+                <img src="idex-space.jpg" alt="IDEX Space — CHOG"> 
+                <img src="idex-space3.jpg" alt="IDEX Space — CHOG"> 
+                <div class="pc-iph">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    idex-space.jpg
+                </div>
+            </div>
+            <div class="pc-body">
+                <div class="pc-badge maint" data-i18n="b_alt">🏭 Alternance</div>
+                <div class="pc-title" data-i18n="m2_t">IDEX Space · CHOG & CSG</div>
+                <p class="pc-desc" data-i18n="m2_d">Rédiger et corriger les procédures de consignation haute tension pour sécuriser les interventions sur les installations HT du CHOG. Assurer l'exploitation quotidienne des systèmes électriques et CVC : rondes terrain, relevés d'anomalies, diagnostic des défaillances et mise en place des actions correctives pour garantir la continuité de service.</p>
+                <div class="pc-tags">
+                    <span class="pc-tag">HT / BT</span>
+                    <span class="pc-tag">CVC</span>
+                    <span class="pc-tag">Consignation HT</span>
+                    <span class="pc-tag">CSG/CHOG</span>
+                </div>
+                <div class="pc-date" data-i18n="d_apr26">Depuis avril 2026</div>
+            </div>
+        </div>
+
+        <!-- Portail automatisé IUT -->
+        <div class="pc maint anim d1">
+            <div class="pc-img">
+                <img src="portail1.jpg" alt="Maquette Portail Automatisé — vue d'ensemble"> 
+                 <img src="portail2.jpg" alt="Maquette Portail Automatisé — cablâge"> 
+                 <img src="portail3.jpg" alt="Maquette Portail Automatisé — grafcet"> 
+                 <img src="portail4.jpg" alt="Maquette Portail Automatisé — implantation"> 
+                <div class="pc-iph">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    portail-auto.jpg
+                </div>
+            </div>
+            <div class="pc-body">
+                <div class="pc-badge maint" data-i18n="b_iut">🎓 BUT GEII</div>
+                <div class="pc-title" data-i18n="m4_t">Maquette Portail Automatisé — IUT</div>
+                <p class="pc-desc" data-i18n="m4_d">Diagnostiquer la défaillance d'une maquette de portail automatisé et réaliser la maintenance curative pour remettre le système en état de marche. Programmer la séquence de mise en marche automatique en Grafcet, avec gestion des boutons de commande. Réaliser la maintenance améliorative en créant les schémas d'implantation — jusqu'alors absents — pour fiabiliser et accélérer les futures interventions.</p>
+                <div class="pc-tags">
+                    <span class="pc-tag">Grafcet</span>
+                    <span class="pc-tag">Curative</span>
+                    <span class="pc-tag">Améliorative</span>
+                    <span class="pc-tag">Schémas d'implantation</span>
+                </div>
+                <div class="pc-date">IUT de Kourou · 2023 – 2026</div>
+            </div>
+        </div>
+
+        <!-- SPV -->
+        <div class="pc maint anim d3">
+            <div class="pc-img">
+                 <img src="spv.jpg" alt="Sapeur-Pompier Volontaire"> 
+                <div class="pc-iph">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    spv.jpg
+                </div>
+            </div>
+            <div class="pc-body">
+                <div class="pc-badge maint" data-i18n="b_vol">🚒 Bénévolat</div>
+                <div class="pc-title" data-i18n="m3_t">Sapeur-Pompier Volontaire</div>
+                <p class="pc-desc" data-i18n="m3_d">Vérifier l'état opérationnel des équipements d'intervention avant chaque garde selon les procédures réglementaires. Maintenir la traçabilité des contrôles effectués, garantissant disponibilité et fiabilité des matériels en situation d'urgence réelle.</p>
+                <div class="pc-tags">
+                    <span class="pc-tag" data-i18n="tk_sang">Sang-froid opérationnel</span>
+                    <span class="pc-tag">EPP</span>
+                    <span class="pc-tag" data-i18n="tk_team">Travail en équipe</span>
+                </div>
+                <div class="pc-date" data-i18n="d_mai26">Depuis mai 2026</div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- ── 2. INSTALLER ──────────────────────────────── -->
+<section class="comp-sec" id="installer">
+<div class="sw">
+    <div class="sec-head anim">
+        <div class="sec-lbl inst">⚡ <span data-i18n="t_inst">Installer</span></div>
+        <h2 class="sec-title">
+            <span data-i18n="i_t1">Installation &amp; </span><span class="hl-i" data-i18n="i_t2">Mise en service</span>
+        </h2>
+        <p class="sec-desc" data-i18n="i_desc">Habilitations électriques, mise en service d'équipements industriels et formations terrain.</p>
+    </div>
+    <div class="port-grid">
+
+        <!-- DOMMS Ronde — Mise en service (featured) -->
+        <div class="pc inst feat anim d1">
+            <div class="pc-img">
+                 <img src="domms1.jpg" alt="DOMMS Ronde — Mise en service BEM"> 
+                 <img src="domms2.jpg" alt="DOMMS Ronde — Mise en service BEM"> 
+                <div class="pc-iph">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    domms-mise-en-service.jpg
+                </div>
+            </div>
+            <div class="pc-body">
+                <div class="pc-badge inst" data-i18n="b_alt">🏭 Alternance</div>
+                <div class="pc-title" data-i18n="i1_t">DOMMS Ronde — Mise en service · BEM</div>
+                <p class="pc-desc" data-i18n="i1_d">Piloter la mise en service complète du logiciel de ronde DOMMS Ronde sur la centrale biomasse : gérer la phase de test, identifier et corriger les anomalies, recueillir les retours terrain et itérer jusqu'à la stabilisation. Former les équipes opérationnelles et les cadres à son utilisation. Assurer l'interface directe avec la société éditrice Olivatech pour le suivi des évolutions et la résolution des correctifs.</p>
+                <div class="pc-tags">
+                    <span class="pc-tag">DOMMS</span>
+                    <span class="pc-tag">Mise en service</span>
+                    <span class="pc-tag">Tests & débogage</span>
+                    <span class="pc-tag">Formation</span>
+                    <span class="pc-tag">Olivatech</span>
+                </div>
+                <div class="pc-date">Oct. 2024 – Mars 2026</div>
+            </div>
+        </div>
+
+        <!-- FANUC — Montage & Installation mécanique -->
+        <div class="pc inst anim d3">
+            <div class="pc-img">
+                 <img src="olympiades3.jpg" alt="Montage cellule FANUC — Olympiades"> 
+                 <img src="olympiades4.jpg" alt="Montage cellule FANUC — Olympiades"> 
+                 <img src="olympiades5.jpg" alt="Montage cellule FANUC — Olympiades"> 
+                <div class="pc-iph">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    fanuc-montage.jpg
+                </div>
+            </div>
+            <div class="pc-body">
+                <div class="pc-badge inst" data-i18n="b_comp">🏆 Finaliste national</div>
+                <div class="pc-title" data-i18n="i3_t">Montage & Installation — Cellule FANUC</div>
+                <p class="pc-desc" data-i18n="i3_d">Prendre en charge l'intégralité du montage mécanique de la cellule robotique : installation et réglage des préhenseurs, ajustement des parties mobiles, pose et raccordement des capteurs, connexions pneumatiques et mise en place de l'environnement de travail selon le cahier des charges de la compétition.</p>
+                <div class="pc-tags">
+                    <span class="pc-tag">FANUC</span>
+                    <span class="pc-tag" data-i18n="i3_t1">Montage mécanique</span>
+                    <span class="pc-tag">Pneumatique</span>
+                    <span class="pc-tag" data-i18n="i3_t2">Capteurs</span>
+                </div>
+                <div class="pc-date" data-i18n="c1_date">📅 11 & 12 mars 2025</div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- ── 3. CONCEVOIR ──────────────────────────────── -->
+<section class="comp-sec" id="concevoir">
+<div class="sw">
+    <div class="sec-head anim">
+        <div class="sec-lbl conc">🤖 <span data-i18n="t_conc">Concevoir</span></div>
+        <h2 class="sec-title">
+            <span data-i18n="c_t1">Conception &amp; </span><span class="hl-c" data-i18n="c_t2">Programmation</span>
+        </h2>
+        <p class="sec-desc" data-i18n="c_desc">Robotique industrielle, automatisme et projets de conception en milieu académique et compétitif.</p>
+    </div>
+    <div class="port-grid">
+
+        <!-- Olympiades FANUC (featured) -->
+        <div class="pc conc feat anim d1">
+            <div class="pc-img">
+                <!--
+                    📸 Place "olympiades.jpg" dans /Users/h3nzo/portfolio/
+                    puis décommente la ligne ci-dessous
+                -->
+                 <img src="olympiades2.jpg" alt="Olympiades FANUC Robotics"> 
+                <div class="pc-iph">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    olympiades.jpg
+                </div>
+            </div>
+            <div class="pc-body">
+                <div class="pc-badge conc" data-i18n="b_comp">🏆 Finaliste national</div>
+                <div class="pc-title" data-i18n="c1_t">Olympiades FANUC Robotics</div>
+                <p class="pc-desc" data-i18n="c1_d">Implanter la structure industrielle selon les attendus de la compétition. Concevoir et programmer la séquence robotique complète sur robot industriel FANUC (langage TPE) en envrionnement commpétitif. Adapter la solution en temps réel aux contraintes imposées : analyse du besoin, programmation, vérification des paramètres, test et ajustement.</p>
+                <div class="pc-tags">
+                    <span class="pc-tag">FANUC</span>
+                    <span class="pc-tag">TPE</span>
+                    <span class="pc-tag" data-i18n="c1_t1">Robotique industrielle</span>
+                    <span class="pc-tag" data-i18n="tk_team">Travail en équipe</span>
+                </div>
+                <div class="pc-date" data-i18n="c1_date">📅 11 & 12 mars 2025</div>
+            </div>
+        </div>
+
+        <!-- Automatisme IUT -->
+        <div class="pc conc anim d2">
+            <div class="pc-img">
+                 <img src="carrefour1.jpg" alt="Automatisme IUT"> 
+                  <img src="carrefour2.jpg" alt="Automatisme IUT"> 
+                   <img src="lorawan.jpg" alt="Automatisme IUT"> 
+
+                <div class="pc-iph">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    automatisme.jpg
+                </div>
+            </div>
+            <div class="pc-body">
+                <div class="pc-badge conc" data-i18n="b_iut">🎓 BUT GEII</div>
+                <div class="pc-title" data-i18n="c2_t">Automatisme & Embarqué</div>
+                <p class="pc-desc" data-i18n="c2_d">Concevoir et programmer des feux de carrefour en VHDL avec gestion de temporisation et logique multivoie. Mettre en œuvre des communications avec des capteurs distants via LoRaWAN : acquisition de données environnementales (température, humidité) et traitement des trames reçues.</p>
+                <div class="pc-tags">
+                    <span class="pc-tag">VHDL</span>
+                    <span class="pc-tag">LoRaWAN</span>
+                    <span class="pc-tag">IoT</span>
+                    <span class="pc-tag" data-i18n="c2_t1">Embarqué</span>
+                </div>
+                <div class="pc-date">IUT de Kourou · 2023 – 2026</div>
+            </div>
+        </div>
+
+        <!-- Stage Chine -->
+        <div class="pc conc anim d3">
+            <div class="pc-img">
+                 <img src="chine2.jpg" alt="Stage en Chine"> 
+                <div class="pc-iph">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    chine.jpg
+                </div>
+            </div>
+            <div class="pc-body">
+                <div class="pc-badge conc" data-i18n="b_proj">🌏 Projet</div>
+                <div class="pc-title" data-i18n="c3_t">Stage en Chine</div>
+                <p class="pc-desc" data-i18n="c3_d">Confronter les méthodes de conception françaises aux pratiques industrielles chinoises lors d'un stage en école d'ingénieur. S'immerger dans un écosystème en pointe — robotique avancée, automatisation — et en rapporter des approches innovantes applicables.</p>
+                <div class="pc-tags">
+                    <span class="pc-tag" data-i18n="c3_t1">Innovation</span>
+                    <span class="pc-tag" data-i18n="c3_t2">International</span>
+                    <span class="pc-tag">Mandarin</span>
+                </div>
+                <div class="pc-date" data-i18n="c3_date">Objectif 2026 – 2027</div>
+            </div>
+        </div>
+
+        <!-- Analyseur réseau -->
+        <div class="pc conc anim d1">
+            <div class="pc-img">
+                 <img src="analyseur-reseau1.jpg" alt="Analyseur de Réseau Électrique"> 
+                 <img src="analyseur-reseau2.jpg" alt="Analyseur de Réseau Électrique"> 
+                <div class="pc-iph">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    analyseur-reseau.jpg
+                </div>
+            </div>
+            <div class="pc-body">
+                <div class="pc-badge conc" data-i18n="b_iut">🎓 BUT GEII</div>
+                <div class="pc-title" data-i18n="c4_t">Analyseur de Réseau Électrique</div>
+                <p class="pc-desc" data-i18n="c4_d">Concevoir et réaliser un analyseur de réseau électrique complet : schéma de principe, sélection et câblage des composants, validation des mesures de tension, courant et puissance. Rédiger le rapport de conception documentant les choix techniques et les résultats de mesure obtenus.</p>
+                <div class="pc-tags">
+                    <span class="pc-tag">Analyse réseau</span>
+                    <span class="pc-tag">Mesures U/I/P</span>
+                    <span class="pc-tag">Électronique</span>
+                </div>
+                <div class="pc-date">IUT de Kourou · S1 2023</div>
+            </div>
+        </div>
+
+        <!-- Alimentation variable IHM -->
+        <div class="pc conc anim d2">
+            <div class="pc-img">
+                <img src="buck2.jpg" alt="Alimentation Variable avec IHM"> 
+                 <img src="buck.jpg" alt="Alimentation Variable avec IHM"> 
+                <div class="pc-iph">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    alim-variable.jpg
+                </div>
+            </div>
+            <div class="pc-body">
+                <div class="pc-badge conc" data-i18n="b_iut">🎓 BUT GEII</div>
+                <div class="pc-title" data-i18n="c5_t">Convertisseur Buck avec IHM</div>
+                <p class="pc-desc" data-i18n="c5_d">Concevoir et réaliser un convertisseur Buck piloté par une interface homme-machine : implémenter un mode de démarrage direct, un démarrage progressif et un réglage du rapport cyclique par curseur. Valider les performances par des mesures comparatives entre les différents modes de fonctionnement.</p>
+                <div class="pc-tags">
+                    <span class="pc-tag">Buck</span>
+                    <span class="pc-tag">PWM</span>
+                    <span class="pc-tag">IHM</span>
+                    <span class="pc-tag">Rapport cyclique</span>
+                </div>
+                <div class="pc-date">IUT de Kourou · 2023 – 2024</div>
+            </div>
+        </div>
+
+        <!-- Habitation à énergie positive -->
+        <div class="pc conc anim d3">
+            <div class="pc-img">
+                 <img src="hep1.jpg" alt="Habitation à Énergie Positive"> 
+                 <img src="hep2.jpg" alt="Habitation à Énergie Positive"> 
+                <div class="pc-iph">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    hep.jpg
+                </div>
+            </div>
+            <div class="pc-body">
+                <div class="pc-badge conc" data-i18n="b_wip">🌱 En cours</div>
+                <div class="pc-title" data-i18n="c6_t">Habitation à Énergie Positive</div>
+                <p class="pc-desc" data-i18n="c6_d">Mener un travail de recherche sur la conception d'une habitation à énergie positive capable d'être autonome du réseau : dimensionner la production solaire, étudier les solutions de stockage par batterie et la réinjection du surplus sur le réseau, en visant l'indépendance énergétique totale.</p>
+                <div class="pc-tags">
+                    <span class="pc-tag">Énergie solaire</span>
+                    <span class="pc-tag">Stockage</span>
+                    <span class="pc-tag">Réinjection réseau</span>
+                    <span class="pc-tag">Autonomie</span>
+                </div>
+                <div class="pc-date" data-i18n="c6_date">En cours · 2025 – 2026</div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- ── 4. VÉRIFIER ───────────────────────────────── -->
+<section class="comp-sec" id="verifier">
+<div class="sw">
+    <div class="sec-head anim">
+        <div class="sec-lbl veri">✅ <span data-i18n="t_veri">Vérifier</span></div>
+        <h2 class="sec-title">
+            <span data-i18n="v_t1">Tests &amp; </span><span class="hl-v" data-i18n="v_t2">Validation</span>
+        </h2>
+        <p class="sec-desc" data-i18n="v_desc">Suivi des performances, rédaction de procédures, formation des équipes et contrôle qualité sur sites industriels.</p>
+    </div>
+    <div class="port-grid">
+
+        <!-- KPI IDEX Biomasse (featured) -->
+        <div class="pc veri feat anim d1">
+            <div class="pc-img">
+                <!--
+                    📸 Place "prod.jpg" dans /Users/h3nzo/portfolio/
+                    puis décommente la ligne ci-dessous
+                -->
+                 <img src="prod.jpg" alt="Suivi KPI IDEX Biomasse"> 
+                <div class="pc-iph">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    kpi.jpg
+                </div>
+            </div>
+            <div class="pc-body">
+                <div class="pc-badge veri" data-i18n="b_alt">🏭 Alternance</div>
+                <div class="pc-title" data-i18n="v1_t">Suivi KPI & Procédures — IDEX Biomasse</div>
+                <p class="pc-desc" data-i18n="v1_d">Concevoir les tableaux de bord d'exploitation pour suivre les KPI de production en temps réel. Rédiger les procédures de conduite décrivant la démarche à suivre lors de chaque panne, en identifiant les causes racines et les actions correctives à mettre en œuvre. Former les équipes aux protocoles d'urgence et à l'utilisation des EPI.</p>
+                <div class="pc-tags">
+                    <span class="pc-tag" data-i18n="tk_kpi">Suivi KPI</span>
+                    <span class="pc-tag" data-i18n="tk_proc">Rédaction procédures</span>
+                    <span class="pc-tag">EPP</span>
+                    <span class="pc-tag" data-i18n="v1_t1">Tableaux de bord</span>
+                    <span class="pc-tag" data-i18n="v1_t2">Formation équipes</span>
+                </div>
+                <div class="pc-date">Oct. 2024 – Mars 2026</div>
+            </div>
+        </div>
+
+        <!-- Mesures & Diagnostics IUT -->
+        <div class="pc veri anim d2">
+            <div class="pc-img">
+                 <img src="verif1.jpg" alt="Mesures et Diagnostics IUT"> 
+                 <img src="verif2.jpg" alt="Mesures et Diagnostics IUT"> 
+                <div class="pc-iph">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    mesures.jpg
+                </div>
+            </div>
+            <div class="pc-body">
+                <div class="pc-badge veri" data-i18n="b_iut">🎓 BUT GEII</div>
+                <div class="pc-title" data-i18n="v2_t">Mesures & Diagnostics</div>
+                <p class="pc-desc" data-i18n="v2_d">Suivre un protocole de test sur une maquette mise en défaillance imposée : identifier la panne, conduire les campagnes de mesures électriques (oscilloscope, analyseur de spectre) et rédiger le procès-verbal documentant la démarche, les causes racines identifiées et les préconisations correctives.</p>
+                <div class="pc-tags">
+                    <span class="pc-tag">Oscilloscope</span>
+                    <span class="pc-tag" data-i18n="v2_t1">Diagnostic</span>
+                    <span class="pc-tag" data-i18n="v2_t2">Rapport technique</span>
+                </div>
+                <div class="pc-date">IUT de Kourou · 2023 – 2026</div>
+            </div>
+        </div>
+
+        <!-- DOMMS Ronde CHOG -->
+        <div class="pc veri anim d1">
+            <div class="pc-img">
+                 <img src="domms2.jpg" alt="DOMMS Ronde — CHOG"> 
+                <div class="pc-iph">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    domms-ronde.jpg
+                </div>
+            </div>
+            <div class="pc-body">
+                <div class="pc-badge veri" data-i18n="b_alt">🏭 Alternance</div>
+                <div class="pc-title" data-i18n="v4_t">DOMMS Ronde — BEM</div>
+                <p class="pc-desc" data-i18n="v4_d">Effectuer les rondes d'exploitation via DOMMS Ronde : relever les paramètres des capteurs, assurer la traçabilité des mesures et générer les rapports structurés. Identifier les écarts aux valeurs nominales et déclencher les actions correctives adaptées pour garantir la conformité des installations.</p>
+                <div class="pc-tags">
+                    <span class="pc-tag">DOMMS</span>
+                    <span class="pc-tag">Relevés capteurs</span>
+                    <span class="pc-tag">Rapports</span>
+                    <span class="pc-tag">Rondes</span>
+                </div>
+                <div class="pc-date">Oct. 2024 – Mars 2026</div>
+            </div>
+        </div>
+
+        <!-- SPV contrôle -->
+        <div class="pc veri anim d3">
+            <div class="pc-img">
+                 <img src="caserne matoury.jpg" alt="Contrôle opérationnel SPV">    
+                <div class="pc-iph">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    spv-check.jpg
+                </div>
+            </div>
+            <div class="pc-body">
+                <div class="pc-badge veri" data-i18n="b_vol">🚒 Bénévolat</div>
+                <div class="pc-title" data-i18n="v3_t">Contrôle opérationnel SPV</div>
+                <p class="pc-desc" data-i18n="v3_d">Effectuer les vérifications réglementaires des équipements d'intervention (ARI, tenues feu, matériels hydrauliques) avant chaque engagement opérationnel. Appliquer les procédures standardisées garantissant fiabilité et disponibilité des matériels face à l'urgence.</p>
+                <div class="pc-tags">
+                    <span class="pc-tag">ARI</span>
+                    <span class="pc-tag" data-i18n="tk_proc">Procédures</span>
+                    <span class="pc-tag" data-i18n="tk_sang">Sang-froid</span>
+                </div>
+                <div class="pc-date" data-i18n="d_mai26">Depuis mai 2026</div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</section>
+
+
+<!-- ── FOOTER ────────────────────────────────────────── -->
+<footer>
+    <a href="index.html" class="ft-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        <span data-i18n="ft_back">Retour au CV</span>
+    </a>
+    <p>© 2026 Henzo HO FOUI SANG LERANDY &nbsp;·&nbsp; <span data-i18n="ft_rights">Tous droits réservés</span></p>
+</footer>
+
+
+<!-- ── JAVASCRIPT ────────────────────────────────────── -->
+<script>
+const T = {
+  fr: {
+    nav_back:"Retour au CV",
+    hero_lbl:"BUT GEII · 4 Compétences",
+    hero_t1:"Mon", hero_t2:"Portfolio",
+    hero_sub:"Réalisations académiques et professionnelles, organisées par compétence.",
+    t_maint:"Maintenir", t_inst:"Installer", t_conc:"Concevoir", t_veri:"Vérifier",
+    m_t1:"Maintenance & ", m_t2:"Exploitation",
+    m_desc:"Supervision, maintenance préventive et curative de systèmes énergétiques industriels critiques.",
+    i_t1:"Installation & ", i_t2:"Mise en service",
+    i_desc:"Mise en service de systèmes industriels et logiciels, installation mécanique et déploiement terrain.",
+    c_t1:"Conception & ", c_t2:"Programmation",
+    c_desc:"Robotique industrielle, automatisme et projets de conception en milieu académique et compétitif.",
+    v_t1:"Tests & ", v_t2:"Validation",
+    v_desc:"Suivi des performances, rédaction de procédures, formation des équipes et contrôle qualité sur sites industriels.",
+    b_alt:"🏭 Alternance", b_vol:"🚒 Bénévolat", b_cert:"⚡ Certifications",
+    b_form:"📋 Formation", b_iut:"🎓 BUT GEII", b_comp:"🏆 Finaliste national", b_proj:"🌏 Projet", b_wip:"🌱 En cours",
+    m1_t:"Centrale Biomasse IDEX — Montsinéry",
+    m1_d:"La création du tableau de suivi des maintenances, combinée à ma participation aux interventions curatives (débourrages, changements de vannes et de moteurs) et préventives (remplacement des couteaux du broyeur), m'a permis de démontrer ma capacité à exécuter des opérations de maintenance en respectant les procédures et à proposer une stratégie adaptée aux coûts d'indisponibilité. La mise en place du fichier de demande d'interventions atteste de ma maîtrise de la traçabilité des actions correctives réalisées.",
+    m2_t:"IDEX Space · CHOG & CSG",
+    m2_d:"Rédiger et corriger les procédures de consignation haute tension sur les sites du Centre Hospitalier de l'Ouest Guyanais et du Centre Spatial Guyanais m'a permis de démontrer ma capacité à diagnostiquer les dysfonctionnements d'un système et à y remédier en identifiant la cause racine. Cette expérience prouve également ma maîtrise de la production de procédures de maintenance conformes aux exigences réglementaires.",
+    m4_t:"Maquette Portail Automatisé — IUT",
+    m4_d:"Face à la panne de la maquette de portail automatisé, j'ai pu démontrer ma capacité à identifier un dysfonctionnement et à y remédier. La création des schémas d'implantation et la programmation de la séquence Grafcet témoignent de ma maîtrise de la maintenance améliorative et de ma capacité à proposer une solution pérenne pour les futures interventions.",
+    m3_t:"Sapeur-Pompier Volontaire",
+    m3_d:"Vérifier systématiquement les équipements d'intervention avant chaque prise de garde m'a permis d'exécuter l'entretien et le contrôle d'un système en respectant une procédure réglementaire, tout en maintenant la traçabilité nécessaire à la disponibilité opérationnelle en situation d'urgence réelle.",
+    i1_t:"DOMMS Ronde — Mise en service · BEM",
+    i1_d:"De la phase de test au débogage, en passant par la collecte des retours terrain et la formation des équipes, la mise en service de DOMMS Ronde sur la centrale biomasse atteste de ma capacité à exécuter la mise en service d'un système et à en planifier les différentes étapes. Mon interface directe avec la société éditrice Olivatech démontre ma capacité à produire la procédure associée et à en assurer le suivi des évolutions.",
+    i2_t:"FCIL Niveaux 1 & 2",
+    i2_d:"Appliquer les protocoles d'installation et de mise en service d'équipements industriels conformément aux normes en vigueur. Consolider les compétences pratiques d'installation acquises en alternance par une formation certifiante.",
+    i2_tag:"Mise en service",
+    i3_t:"Montage & Installation — Cellule FANUC",
+    i3_d:"Le montage de la cellule robotique FANUC, incluant l'installation des préhenseurs, le réglage des parties mobiles, la pose des capteurs et les raccordements pneumatiques, prouve ma capacité à appliquer une procédure d'installation d'un système industriel et à en exécuter la mise en service conformément au cahier des charges.",
+    i3_t1:"Montage mécanique", i3_t2:"Capteurs", i3_t3:"Pneumatique",
+    c1_t:"Olympiades FANUC Robotics",
+    c1_d:"En conditions de compétition nationale, concevoir et programmer la séquence robotique complète sur robot FANUC m'a permis de produire une analyse fonctionnelle, de réaliser un prototype logiciel opérationnel et de proposer des solutions techniques adaptées. L'adaptation en temps réel de ma solution face aux contraintes imposées démontre ma capacité à dérisquer les choix techniques retenus sous pression.",
+    c1_t1:"Robotique industrielle", c1_date:"📅 11 & 12 mars 2025",
+    c4_t:"Analyseur de Réseau Numérique",
+    c4_d:"Du schéma de principe à la validation des mesures U/I/P, la conception et la réalisation de l'analyseur de réseau m'ont permis de produire une analyse fonctionnelle, de réaliser le prototype correspondant et de rédiger un dossier de conception. La validation des résultats obtenus prouve la pertinence des choix technologiques retenus.",
+    c5_t:"Convertisseur Buck avec IHM",
+    c5_d:"Le convertisseur Buck conçu, intégrant un démarrage direct, un démarrage progressif et le réglage du rapport cyclique par curseur sur l'IHM, illustre ma capacité à contribuer à la rédaction d'un cahier des charges et à proposer des solutions techniques adaptées à l'analyse fonctionnelle. Les mesures comparatives entre les différents modes de fonctionnement viennent prouver la pertinence de ces choix.",
+    c6_t:"Habitation à Énergie Positive",
+    c6_d:"Ce travail de recherche sur la conception d'une habitation à énergie positive, portant sur le dimensionnement solaire, le stockage et la réinjection du surplus sur le réseau, illustre ma capacité à contribuer à la rédaction d'un cahier des charges et à dérisquer des solutions techniques en tenant compte des enjeux énergétiques et environnementaux.",
+    c6_date:"En cours · 2025 – 2026",
+    c2_t:"Automatisme & Embarqué",
+    c2_d:"La conception des feux de carrefour en VHDL avec gestion de temporisation et logique multivoie témoigne de ma capacité à réaliser un prototype matériel/logiciel à partir d'une analyse fonctionnelle. Mettre en œuvre la communication LoRaWAN avec des capteurs distants m'a en outre permis de proposer et valider des solutions techniques embarquées pour l'acquisition de données environnementales.",
+    c2_t1:"Embarqué",
+    c3_t:"Stage en Chine",
+    c3_d:"Confronter les méthodes de conception françaises aux pratiques industrielles chinoises lors d'un stage en école d'ingénieur. S'immerger dans un écosystème en pointe robotique avancée, automatisation et en rapporter des approches innovantes applicables.",
+    c3_t1:"Innovation", c3_t2:"International", c3_date:"Objectif 2026 – 2027",
+    v1_t:"Suivi KPI & Procédures — IDEX Biomasse",
+    v1_d:"Les tableaux de bord et les procédures de conduite rédigés sur la centrale biomasse attestent de ma capacité à identifier les tests et mesures nécessaires à la validation du fonctionnement d'un système et à certifier le fonctionnement des équipements industriels. La formation des équipes et l'identification des causes racines de chaque panne témoignent de ma maîtrise de la production de procédures d'essais validant la conformité du système.",
+    v1_t1:"Tableaux de bord", v1_t2:"Formation équipes",
+    v2_t:"Mesures & Diagnostics",
+    v2_d:"Suivre un protocole de test sur une maquette mise en défaillance imposée m'a permis de démontrer ma capacité à appliquer une procédure d'essais, à identifier et à décrire le dysfonctionnement. La rédaction du procès-verbal documentant la démarche et les causes racines identifiées prouve ma capacité à formaliser un diagnostic dans un document de référence.",
+    v2_t1:"Diagnostic", v2_t2:"Procès-verbal",
+    v4_t:"DOMMS Ronde — BEM",
+    v4_d:"Les rondes d'exploitation réalisées via DOMMS Ronde, couvrant les relevés de capteurs, la traçabilité des mesures et la génération de rapports, témoignent de ma capacité à identifier les paramètres à surveiller pour valider le fonctionnement des installations et à certifier leur conformité aux valeurs nominales.",
+    v3_t:"Contrôle opérationnel SPV",
+    v3_d:"À chaque prise de garde, les vérifications réglementaires des équipements d'intervention m'ont permis d'appliquer des procédures d'essais sur des systèmes critiques et d'identifier les tests nécessaires pour garantir leur disponibilité opérationnelle.",
+    tk_prev:"Maintenance préventive", tk_kpi:"Suivi KPI", tk_proc:"Suivi de procédures",
+    tk_sang:"Sang-froid opérationnel", tk_team:"Travail en équipe",
+    d_apr26:"Depuis avril 2026", d_mai26:"Depuis mai 2026",
+    ft_back:"Retour au CV", ft_rights:"Tous droits réservés"
+  },
+  en: {
+    nav_back:"Back to CV",
+    hero_lbl:"BUT GEII · 4 Competencies",
+    hero_t1:"My", hero_t2:"Portfolio",
+    hero_sub:"Academic and professional achievements, organised by competency.",
+    t_maint:"Maintain", t_inst:"Install", t_conc:"Design", t_veri:"Verify",
+    m_t1:"Maintenance & ", m_t2:"Operations",
+    m_desc:"Daily supervision, preventive and corrective maintenance of critical industrial energy systems.",
+    i_t1:"Installation & ", i_t2:"Commissioning",
+    i_desc:"Industrial and software commissioning, mechanical installation and field deployment.",
+    c_t1:"Design & ", c_t2:"Programming",
+    c_desc:"Industrial robotics, automation and design projects in academic and competitive environments.",
+    v_t1:"Testing & ", v_t2:"Validation",
+    v_desc:"Performance monitoring, procedure writing, team training and quality control on industrial sites.",
+    b_alt:"🏭 Work-Study", b_vol:"🚒 Volunteering", b_cert:"⚡ Certifications",
+    b_form:"📋 Training", b_iut:"🎓 BUT GEII", b_comp:"🏆 National finalist", b_proj:"🌏 Project", b_wip:"🌱 In progress",
+    m1_t:"IDEX Biomass Plant — Montsinéry",
+    m1_d:"Building the maintenance tracking sheet, combined with participation in corrective interventions (unjamming, valve and motor replacement) and preventive ones (crusher blade changes), has allowed me to demonstrate my ability to carry out maintenance operations in compliance with procedures and to propose a strategy suited to unavailability costs. Setting up the work order request form attests to my ability to trace all corrective actions performed.",
+    m2_t:"IDEX Space · CHOG & CSG",
+    m2_d:"Writing and revising high-voltage lockout procedures at the Centre Hospitalier de l'Ouest Guyanais and Centre Spatial Guyanais sites has allowed me to demonstrate my ability to diagnose system faults and remedy them by identifying the root cause. This experience also proves my command of producing maintenance procedures compliant with regulatory requirements.",
+    m4_t:"Automated Gate Mock-up — IUT",
+    m4_d:"Faced with a fault on the automated gate mock-up, I was able to demonstrate my ability to identify a malfunction and remedy it. Creating the installation diagrams and programming the Grafcet sequence attest to my command of improvement maintenance and my ability to propose a lasting solution for future interventions.",
+    m3_t:"Volunteer Firefighter",
+    m3_d:"Systematically verifying intervention equipment before each shift has allowed me to carry out the servicing and control of a system in compliance with regulatory procedures, while maintaining the traceability required for operational readiness in real emergency situations.",
+    i1_t:"DOMMS Ronde — Commissioning · BEM",
+    i1_d:"From the test phase to debugging, through field feedback collection and team training, the commissioning of DOMMS Ronde at the biomass plant attests to my ability to execute the commissioning of a system and plan its various stages. My direct interface with the publisher Olivatech demonstrates my ability to produce the associated commissioning procedure and ensure follow-up on its updates.",
+    i2_t:"FCIL Levels 1 & 2",
+    i2_d:"Applied installation and commissioning protocols for industrial equipment in line with applicable standards. Certifying training consolidating the practical installation skills acquired during work-study.",
+    i2_tag:"Commissioning",
+    i3_t:"Assembly & Installation — FANUC Cell",
+    i3_d:"The assembly of the FANUC robotic cell, including gripper installation, adjustment of moving parts, sensor placement and pneumatic connections, proves my ability to apply an industrial system installation procedure and execute its commissioning in line with the specification.",
+    i3_t1:"Mechanical assembly", i3_t2:"Sensors", i3_t3:"Pneumatics",
+    c1_t:"FANUC Robotics Olympiad",
+    c1_d:"Under national competition conditions, designing and programming the complete robotic sequence on a FANUC robot allowed me to produce a functional analysis, build an operational software prototype and propose adapted technical solutions. Adapting my solution in real time to imposed constraints demonstrates my ability to de-risk retained technical choices under pressure.",
+    c1_t1:"Industrial robotics", c1_date:"📅 March 11 & 12, 2025",
+    c4_t:"Electrical Network Analyser",
+    c4_d:"From the block diagram to the validation of U/I/P measurements, the design and build of the network analyser allowed me to produce a functional analysis, build the corresponding prototype and write a design report. The validation of the results obtained proves the relevance of the technological choices made.",
+    c5_t:"Buck Converter with HMI",
+    c5_d:"The Buck converter designed, integrating direct start, soft start and duty cycle adjustment via a slider on the HMI, illustrates my ability to contribute to the drafting of a specification and to propose technical solutions adapted to the functional analysis. Comparative measurements across the different operating modes prove the relevance of these choices.",
+    c6_t:"Positive-Energy Home — Research",
+    c6_d:"This research project on the design of a positive-energy home, covering solar sizing, storage and surplus grid injection, illustrates my ability to contribute to the drafting of a specification and to de-risk technical solutions taking into account energy and environmental challenges.",
+    c6_date:"In progress · 2025 – 2026",
+    c2_t:"Automation & Embedded Systems",
+    c2_d:"Designing traffic light controllers in VHDL with timer management and multi-channel logic demonstrates my ability to build a hardware/software prototype from a functional analysis. Implementing LoRaWAN communication with remote sensors further allowed me to propose and validate embedded technical solutions for environmental data acquisition.",
+    c2_t1:"Embedded",
+    c3_t:"Internship in China",
+    c3_d:"Engineering internship project to benchmark French design methods against Chinese industrial practices. Objective: immerse in a leading-edge ecosystem — advanced robotics, automation — and bring back innovative applicable approaches.",
+    c3_t1:"Innovation", c3_t2:"International", c3_date:"Target 2026 – 2027",
+    v1_t:"KPI Tracking & Procedures — IDEX Biomass",
+    v1_d:"The operation dashboards and operating procedures written for the biomass plant attest to my ability to identify the tests and measurements needed to validate a system's operation and certify industrial equipment performance. Training the teams and identifying the root causes of each fault demonstrate my command of producing test procedures validating system compliance.",
+    v1_t1:"Dashboards", v1_t2:"Team training",
+    v2_t:"Measurements & Diagnostics",
+    v2_d:"Following a test protocol on a mock-up with an imposed fault allowed me to demonstrate my ability to apply a test procedure, identify and describe the malfunction. Writing the test report documenting the approach and identified root causes proves my ability to formalise a diagnosis in a reference document.",
+    v2_t1:"Diagnostics", v2_t2:"Test report",
+    v4_t:"DOMMS Ronde — BEM",
+    v4_d:"Operational rounds carried out via DOMMS Ronde, covering sensor readings, measurement traceability and report generation, attest to my ability to identify the parameters to monitor for validating installation performance and certifying their compliance with nominal values.",
+    v3_t:"Operational Control — SPV",
+    v3_d:"At each shift, the regulatory verification of intervention equipment has allowed me to apply test procedures on critical systems and identify the tests required to guarantee their operational availability.",
+    tk_prev:"Preventive maintenance", tk_kpi:"KPI monitoring", tk_proc:"Procedure writing",
+    tk_sang:"Composure under pressure", tk_team:"Teamwork",
+    d_apr26:"Since April 2026", d_mai26:"Since May 2026",
+    ft_back:"Back to CV", ft_rights:"All rights reserved"
+  }
+};
+
+let lang = 'fr';
+function setLang(l) {
+    lang = l;
+    document.documentElement.lang = l;
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.toLowerCase() === l));
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const k = el.getAttribute('data-i18n');
+        if (T[l][k] !== undefined) el.textContent = T[l][k];
+    });
+}
+
+/* ── TABS — active state via IntersectionObserver ─── */
+const idMap = { maintenir:'maint', installer:'inst', concevoir:'conc', verifier:'veri' };
+const tabObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const key = idMap[e.target.id];
+        document.querySelectorAll('.ct').forEach(t => t.classList.toggle('on', t.dataset.c === key));
+    });
+}, { rootMargin: '-35% 0px -50% 0px', threshold: 0 });
+Object.keys(idMap).forEach(id => { const el = document.getElementById(id); if (el) tabObs.observe(el); });
+
+function goTo(id) {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+}
+
+/* ── SCROLL ANIMATIONS ──────────────────────────── */
+const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.anim').forEach(el => io.observe(el));
+
+setLang('fr');
+
+/* ── LIGHTBOX ───────────────────────────────────── */
+const lbxEl = document.createElement('div');
+lbxEl.className = 'lbx';
+lbxEl.innerHTML = `
+    <button class="lbx-close" aria-label="Fermer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="lbx-img-wrap"><img class="lbx-img" src="" alt=""></div>
+    <button class="lbx-nav lbx-prev" aria-label="Précédent">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="lbx-nav lbx-next" aria-label="Suivant">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <div class="lbx-counter"></div>
+`;
+document.body.appendChild(lbxEl);
+
+let _lbxImgs = [], _lbxIdx = 0;
+const _lbxImg     = lbxEl.querySelector('.lbx-img');
+const _lbxCounter = lbxEl.querySelector('.lbx-counter');
+const _lbxPrev    = lbxEl.querySelector('.lbx-prev');
+const _lbxNext    = lbxEl.querySelector('.lbx-next');
+
+function openLightbox(imgs, idx) {
+    _lbxImgs = imgs; _lbxIdx = idx;
+    _lbxRefresh();
+    const multi = imgs.length > 1;
+    _lbxPrev.style.display    = multi ? 'flex' : 'none';
+    _lbxNext.style.display    = multi ? 'flex' : 'none';
+    _lbxCounter.style.display = multi ? 'block' : 'none';
+    lbxEl.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    requestAnimationFrame(() => lbxEl.classList.add('visible'));
+}
+function closeLightbox() {
+    lbxEl.classList.remove('visible');
+    lbxEl.addEventListener('transitionend', () => {
+        lbxEl.classList.remove('open');
+        document.body.style.overflow = '';
+    }, { once: true });
+}
+function _lbxShift(dir) {
+    _lbxIdx = (_lbxIdx + dir + _lbxImgs.length) % _lbxImgs.length;
+    _lbxRefresh();
+}
+function _lbxRefresh() {
+    _lbxImg.src = _lbxImgs[_lbxIdx].src;
+    _lbxImg.alt = _lbxImgs[_lbxIdx].alt;
+    if (_lbxImgs.length > 1) _lbxCounter.textContent = (_lbxIdx + 1) + ' / ' + _lbxImgs.length;
+}
+
+lbxEl.querySelector('.lbx-close').onclick = closeLightbox;
+_lbxPrev.onclick = (e) => { e.stopPropagation(); _lbxShift(-1); };
+_lbxNext.onclick = (e) => { e.stopPropagation(); _lbxShift(1); };
+lbxEl.addEventListener('click', e => { if (e.target === lbxEl) closeLightbox(); });
+document.addEventListener('keydown', e => {
+    if (!lbxEl.classList.contains('open')) return;
+    if (e.key === 'Escape')      closeLightbox();
+    if (e.key === 'ArrowLeft')   _lbxShift(-1);
+    if (e.key === 'ArrowRight')  _lbxShift(1);
+});
+
+/* ── CAROUSEL ───────────────────────────────────── */
+function initCarousels() {
+    document.querySelectorAll('.pc-img').forEach(container => {
+        const imgs = Array.from(container.querySelectorAll('img'));
+        if (imgs.length === 0) return;
+        imgs[0].classList.add('active');
+
+        // "Agrandir" hint (always shown when images exist)
+        const hint = document.createElement('div');
+        hint.className = 'lbx-hint';
+        hint.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg> Agrandir';
+        container.appendChild(hint);
+
+        // Click on container (but not on carousel buttons) → lightbox
+        container.addEventListener('click', e => {
+            if (e.target.closest('.car-btn')) return;
+            const currentIdx = container._carIdx || 0;
+            openLightbox(imgs, currentIdx);
+        });
+
+        if (imgs.length === 1) return;
+
+        // Dots
+        const dotsEl = document.createElement('div');
+        dotsEl.className = 'car-dots';
+        imgs.forEach((_, i) => {
+            const dot = document.createElement('div');
+            dot.className = 'car-dot' + (i === 0 ? ' on' : '');
+            dot.onclick = (e) => { e.stopPropagation(); goToSlide(container, i); };
+            dotsEl.appendChild(dot);
+        });
+        container.appendChild(dotsEl);
+        // Counter
+        const count = document.createElement('div');
+        count.className = 'car-count';
+        count.textContent = '1 / ' + imgs.length;
+        container.appendChild(count);
+        // Prev / Next buttons
+        const prev = document.createElement('button');
+        prev.className = 'car-btn car-prev';
+        prev.setAttribute('aria-label', 'Précédent');
+        prev.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="15 18 9 12 15 6"/></svg>';
+        prev.onclick = (e) => { e.stopPropagation(); shiftSlide(container, -1); };
+        const next = document.createElement('button');
+        next.className = 'car-btn car-next';
+        next.setAttribute('aria-label', 'Suivant');
+        next.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="9 18 15 12 9 6"/></svg>';
+        next.onclick = (e) => { e.stopPropagation(); shiftSlide(container, 1); };
+        container.appendChild(prev);
+        container.appendChild(next);
+        container._carIdx = 0;
+    });
+}
+function goToSlide(container, idx) {
+    const imgs = Array.from(container.querySelectorAll('img'));
+    const dots = Array.from(container.querySelectorAll('.car-dot'));
+    const count = container.querySelector('.car-count');
+    imgs.forEach((img, i) => img.classList.toggle('active', i === idx));
+    dots.forEach((dot, i) => dot.classList.toggle('on', i === idx));
+    if (count) count.textContent = (idx + 1) + ' / ' + imgs.length;
+    container._carIdx = idx;
+}
+function shiftSlide(container, dir) {
+    const n = container.querySelectorAll('img').length;
+    goToSlide(container, ((container._carIdx || 0) + dir + n) % n);
+}
+initCarousels();
+</script>
+</body>
+</html>
