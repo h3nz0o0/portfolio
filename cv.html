@@ -175,6 +175,31 @@
     .lang-bar { height: 4px; background: #e2e8f0; border-radius: 2px; overflow: hidden; width: 100%; }
     .lang-fill { height: 100%; background: #1e2a3a; border-radius: 2px; }
 
+    /* Schools bar */
+    .schools-bar {
+        background: #f8fafc;
+        border-bottom: 1px solid #e2e8f0;
+        padding: 7px 36px;
+        display: flex; gap: 20px; flex-wrap: wrap; align-items: center;
+    }
+    .school-tag {
+        font-size: 0.71rem; font-weight: 600; color: #1e2a3a;
+        display: flex; align-items: center; gap: 5px;
+    }
+    .school-tag::before { content: '✓'; color: #2563eb; font-weight: 800; }
+    .school-sep { color: #cbd5e1; }
+
+    /* Skill subsection */
+    .skill-section {
+        grid-column: 1 / -1;
+        font-size: 0.62rem; font-weight: 700;
+        text-transform: uppercase; letter-spacing: 1.5px;
+        color: #64748b; margin-top: 8px; margin-bottom: 2px;
+        padding-bottom: 3px;
+        border-bottom: 1px solid #e2e8f0;
+    }
+    .skill-section:first-child { margin-top: 0; }
+
     /* ── PRINT ── */
     @media print {
         @page { size: A4; margin: 0; }
@@ -221,19 +246,38 @@
         </div>
     </div>
 
+    <!-- SCHOOLS BAR -->
+    <div class="schools-bar">
+        <span class="school-tag">Polytech Montpellier — Génie Industriel, Campus Béziers</span>
+        <span class="school-sep">·</span>
+        <span class="school-tag">Polytech Nantes — Génie Électrique, Campus Saint-Nazaire</span>
+    </div>
+
     <!-- CONTENT -->
     <div class="content">
 
         <!-- À PROPOS -->
         <div>
             <div class="sec"><span class="sec-label">À propos</span><div class="sec-line"></div></div>
-            <p class="about-text">Fort de deux alternances sur sites industriels critiques et Sapeur-Pompier Volontaire, j'intègre Polytech Montpellier Génie Industriel en 3ème année à la rentrée 2026. Finaliste des Olympiades FANUC Robotics, je cultive un goût prononcé pour les défis techniques et le travail collaboratif. Accepté également à Polytech Nantes en Génie Électrique.</p>
+            <p class="about-text">J'intègre le cycle ingénieur en 3ème année à la rentrée 2026, fort de deux alternances sur sites industriels critiques et Sapeur-Pompier Volontaire. Finaliste des Olympiades FANUC Robotics, je cultive un goût prononcé pour les défis techniques et le travail collaboratif.</p>
         </div>
 
         <!-- EXPÉRIENCES -->
         <div>
             <div class="sec"><span class="sec-label">Expériences professionnelles</span><div class="sec-line"></div></div>
             <div class="entry-list">
+
+                <div class="entry">
+                    <div class="entry-date">Depuis mai 2026</div>
+                    <div class="entry-body">
+                        <div class="entry-title">Sapeur-Pompier Volontaire</div>
+                        <div class="entry-org">SDIS Guyane — Centre de Secours de Matoury</div>
+                        <ul class="entry-pts">
+                            <li>Vérification des engins et matériels d'intervention avant chaque garde</li>
+                            <li>Interventions d'urgence en équipe (incendie, secours à personnes)</li>
+                        </ul>
+                    </div>
+                </div>
 
                 <div class="entry">
                     <div class="entry-date">Depuis avr. 2026</div>
@@ -271,18 +315,6 @@
                         <ul class="entry-pts">
                             <li>Montage de la cellule robotique : préhenseurs, capteurs, raccordements pneumatiques</li>
                             <li>Programmation TPE sur robot industriel FANUC en conditions de compétition</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="entry">
-                    <div class="entry-date">Depuis mai 2026</div>
-                    <div class="entry-body">
-                        <div class="entry-title">Sapeur-Pompier Volontaire</div>
-                        <div class="entry-org">SDIS Guyane — Centre de Secours de Matoury</div>
-                        <ul class="entry-pts">
-                            <li>Vérification des engins et matériels d'intervention avant chaque garde</li>
-                            <li>Interventions d'urgence en équipe (incendie, secours à personnes)</li>
                         </ul>
                     </div>
                 </div>
@@ -336,17 +368,24 @@
         <div>
             <div class="sec"><span class="sec-label">Compétences</span><div class="sec-line"></div></div>
             <div class="skills-grid">
-                <div class="skill-item">Programmation C</div>
+                <div class="skill-section">Programmation</div>
+                <div class="skill-item">C</div>
                 <div class="skill-item">LADDER / Grafcet</div>
-                <div class="skill-item">TPE FANUC / VHDL</div>
-                <div class="skill-item">Habilitations B1 B2 BR BC H0</div>
+                <div class="skill-item">TPE FANUC</div>
+                <div class="skill-item">VHDL</div>
+                <div class="skill-section">Habilitations</div>
+                <div class="skill-item">B1 · B2 · BR · BC · H0</div>
                 <div class="skill-item">SST — Sauveteur Secouriste au Travail</div>
                 <div class="skill-item">Sensibilisation ADR</div>
                 <div class="skill-item">Travail en hauteur</div>
-                <div class="skill-item">GMAO · DOMMS · LoRaWAN</div>
+                <div class="skill-section">Outils &amp; systèmes</div>
+                <div class="skill-item">GMAO</div>
+                <div class="skill-item">DOMMS Ronde</div>
+                <div class="skill-item">LoRaWAN</div>
+                <div class="skill-section">Savoir-être</div>
                 <div class="skill-item">Leadership situationnel</div>
                 <div class="skill-item">Sang-froid opérationnel</div>
-                <div class="skill-item">Esprit critique &amp; force de proposition</div>
+                <div class="skill-item">Force de proposition</div>
                 <div class="skill-item">Travail en équipe</div>
             </div>
         </div>
