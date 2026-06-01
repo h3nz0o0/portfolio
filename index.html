@@ -744,13 +744,27 @@
             </ul>
         </div>
 
-        <!--
-            ➕ AJOUTER UN PROJET : duplique un bloc .card et remplis-le
-        -->
-        <div class="card muted anim d3">
-            <div class="card-badge" data-i18n="coming">Bientôt</div>
-            <div class="card-title" data-i18n="p_add_t">Ton prochain projet</div>
-            <div class="card-sub"   data-i18n="p_add_s">Ajoute tes projets personnels ou académiques ici</div>
+        <div class="card anim d3">
+            <div class="card-img">
+                <img src="hep1.jpg" alt="Habitation à Énergie Positive">
+                <div class="img-ph">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                </div>
+            </div>
+            <div class="card-badge">🌱 <span data-i18n="coming">En cours</span></div>
+            <div class="card-title" data-i18n="p3_t">Habitation à Énergie Positive</div>
+            <div class="card-sub"   data-i18n="p3_s">Recherche sur l'autonomie énergétique · 2025 – 2026</div>
+            <ul class="tl-pts" style="margin-top:1rem">
+                <li data-i18n="p3_1">Dimensionner la production solaire</li>
+                <li data-i18n="p3_2">Étudier le stockage batterie et la réinjection sur réseau</li>
+                <li data-i18n="p3_3">Viser l'indépendance énergétique totale</li>
+            </ul>
+        </div>
+
+        <div class="card muted anim d4">
+            <div class="card-badge" data-i18n="p_add_badge">⏳ À venir</div>
+            <div class="card-title" data-i18n="p_add_t">D'autres projets à venir</div>
+            <div class="card-sub"   data-i18n="p_add_s">De nouveaux défis techniques en cours de réalisation</div>
         </div>
 
     </div>
@@ -929,8 +943,13 @@ const T = {
     p2_1:"S'immerger dans les avancées technologiques chinoises et leur industrie",
     p2_2:"Expérience internationale en environnement culturellement exigeant",
     p2_3:"Mettre en pratique le mandarin appris en parallèle",
-    coming:"Bientôt", p_add_t:"Ton prochain projet",
-    p_add_s:"Ajoute tes projets personnels ou académiques ici",
+    coming:"En cours",
+    p3_t:"Habitation à Énergie Positive", p3_s:"Recherche sur l'autonomie énergétique · 2025 – 2026",
+    p3_1:"Dimensionner la production solaire",
+    p3_2:"Étudier le stockage batterie et la réinjection sur réseau",
+    p3_3:"Viser l'indépendance énergétique totale",
+    p_add_badge:"⏳ À venir", p_add_t:"D'autres projets à venir",
+    p_add_s:"De nouveaux défis techniques en cours de réalisation",
     dp_lbl:"Certifications", dp_title:"Mes <span class=\"hl\">Diplômes</span>",
     dp1:"Baccalauréat Général", dp1d:"Mention Très Bien",
     dp2:"Brevet National JSP", dp2d:"Jeune Sapeur-Pompier",
@@ -1005,8 +1024,13 @@ const T = {
     p2_1:"Immerse in China's technological advances and industrial ecosystem",
     p2_2:"International experience in a culturally demanding environment",
     p2_3:"Apply Mandarin skills acquired alongside studies",
-    coming:"Coming soon", p_add_t:"Your next project",
-    p_add_s:"Add your personal or academic projects here",
+    coming:"In progress",
+    p3_t:"Positive-Energy Home", p3_s:"Research on energy autonomy · 2025 – 2026",
+    p3_1:"Size solar production",
+    p3_2:"Study battery storage and grid surplus injection",
+    p3_3:"Aim for full energy independence",
+    p_add_badge:"⏳ Coming soon", p_add_t:"More projects coming",
+    p_add_s:"New technical challenges in the making",
     dp_lbl:"Certifications", dp_title:"My <span class=\"hl\">Diplomas</span>",
     dp1:"French Baccalaureate", dp1d:"With Highest Honours",
     dp2:"National JSP Certificate", dp2d:"Young Firefighter",
