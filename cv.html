@@ -3,283 +3,325 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="logo1.png">
     <title>CV — Henzo Ho Foui Sang Lerandy</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
     <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-        :root {
-            --navy:   #12284a;
-            --navy2:  #1a3560;
-            --teal:   #4f9cf9;
-            --txt:    #1a1a2e;
-            --txt2:   #4a5568;
-            --border: #e2e8f0;
-            --bg:     #f8fafc;
-        }
+    :root {
+        --bg:     #080810;
+        --bg2:    #0e0e1c;
+        --card:   #12122a;
+        --a1:     #4f9cf9;
+        --a2:     #7c3aed;
+        --a3:     #06b6d4;
+        --txt:    #f0f0f8;
+        --txt2:   #8888aa;
+        --txt3:   #505068;
+        --border: rgba(255,255,255,0.07);
+        --grad:   linear-gradient(135deg, #4f9cf9, #7c3aed);
+    }
 
-        html { font-size: 10pt; }
-        body {
-            font-family: 'Inter', sans-serif;
-            background: white;
-            color: var(--txt);
-            line-height: 1.55;
-        }
+    html { font-size: 9.5pt; }
+    body {
+        font-family: 'Inter', sans-serif;
+        background: var(--bg);
+        color: var(--txt);
+        line-height: 1.55;
+    }
 
-        /* ── LAYOUT ─── */
-        .page {
-            display: grid;
-            grid-template-columns: 200px 1fr;
-            min-height: 297mm;
-            width: 210mm;
-            margin: 0 auto;
-            box-shadow: 0 0 40px rgba(0,0,0,0.12);
-        }
+    /* ── PAGE ── */
+    .page {
+        width: 210mm;
+        min-height: 297mm;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 185px 1fr;
+        grid-template-rows: auto 1fr;
+    }
 
-        /* ── SIDEBAR ─── */
-        .sidebar {
-            background: var(--navy);
-            color: #fff;
-            padding: 28px 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 22px;
-        }
+    /* ── HEADER (full width) ── */
+    .cv-header {
+        grid-column: 1 / -1;
+        background: linear-gradient(135deg, #0a0a1a 0%, #0e0e2a 60%, #120c24 100%);
+        padding: 28px 32px 24px;
+        border-bottom: 1px solid var(--border);
+        position: relative;
+        overflow: hidden;
+    }
+    .cv-header::before {
+        content: '';
+        position: absolute; inset: 0;
+        background:
+            radial-gradient(ellipse 60% 100% at 80% 50%, rgba(79,156,249,0.12) 0%, transparent 60%),
+            radial-gradient(ellipse 40% 80% at 20% 0%, rgba(124,58,237,0.1) 0%, transparent 55%);
+        pointer-events: none;
+    }
+    .header-inner { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; }
+    .header-left {}
+    .cv-name {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 2.2rem; font-weight: 800; line-height: 1.05;
+        background: var(--grad);
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: -0.5px;
+    }
+    .cv-title {
+        font-size: 0.78rem; font-weight: 600; letter-spacing: 2px;
+        text-transform: uppercase; color: var(--txt2); margin-top: 6px;
+    }
+    .school-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .pill {
+        font-size: 0.7rem; font-weight: 600;
+        padding: 3px 11px; border-radius: 20px;
+        background: rgba(79,156,249,0.1);
+        border: 1px solid rgba(79,156,249,0.25);
+        color: var(--a1);
+    }
+    .pill.purple {
+        background: rgba(124,58,237,0.1);
+        border-color: rgba(124,58,237,0.25);
+        color: #a78bfa;
+    }
+    .header-right { display: flex; flex-direction: column; gap: 5px; align-items: flex-end; }
+    .contact-line {
+        display: flex; align-items: center; gap: 6px;
+        font-size: 0.75rem; color: var(--txt2);
+    }
+    .contact-line svg { width: 11px; height: 11px; color: var(--a1); flex-shrink: 0; }
+    .contact-line a { color: var(--txt2); text-decoration: none; }
 
-        .photo-wrap {
-            display: flex;
-            justify-content: center;
-        }
-        .photo-wrap img {
-            width: 90px; height: 90px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid rgba(79,156,249,0.5);
-        }
+    /* ── SIDEBAR ── */
+    .sidebar {
+        background: var(--bg2);
+        border-right: 1px solid var(--border);
+        padding: 20px 16px;
+        display: flex; flex-direction: column; gap: 18px;
+    }
 
-        .s-section-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.68rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--teal);
-            margin-bottom: 10px;
-            padding-bottom: 5px;
-            border-bottom: 1px solid rgba(79,156,249,0.25);
-        }
+    .s-title {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 0.62rem; font-weight: 700;
+        letter-spacing: 2.5px; text-transform: uppercase;
+        color: var(--a1); margin-bottom: 8px;
+        padding-bottom: 4px;
+        border-bottom: 1px solid rgba(79,156,249,0.2);
+    }
 
-        /* Contact */
-        .contact-list { display: flex; flex-direction: column; gap: 7px; }
-        .contact-item {
-            display: flex; align-items: flex-start; gap: 7px;
-            font-size: 0.78rem; color: rgba(255,255,255,0.85);
-        }
-        .contact-item svg { width: 12px; height: 12px; flex-shrink: 0; margin-top: 2px; color: var(--teal); }
+    /* Profil */
+    .profil-text { font-size: 0.76rem; color: var(--txt2); line-height: 1.65; }
 
-        /* Profil */
-        .profil-text {
-            font-size: 0.78rem;
-            color: rgba(255,255,255,0.82);
-            line-height: 1.6;
-        }
+    /* Compétences */
+    .skill-list { display: flex; flex-direction: column; gap: 4px; }
+    .skill-item {
+        font-size: 0.74rem; color: var(--txt);
+        padding: 4px 9px;
+        background: rgba(79,156,249,0.07);
+        border: 1px solid rgba(79,156,249,0.14);
+        border-radius: 6px;
+    }
+    .skill-cat { font-size: 0.65rem; color: var(--txt3); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; margin-bottom: 3px; }
 
-        /* Compétences */
-        .skill-list { display: flex; flex-direction: column; gap: 5px; }
-        .skill-item {
-            font-size: 0.78rem;
-            color: rgba(255,255,255,0.85);
-            padding: 4px 8px;
-            background: rgba(79,156,249,0.1);
-            border-left: 2px solid var(--teal);
-            border-radius: 0 4px 4px 0;
-        }
+    /* Langues */
+    .lang-list { display: flex; flex-direction: column; gap: 9px; }
+    .lang-row { display: flex; flex-direction: column; gap: 3px; }
+    .lang-name { font-size: 0.76rem; font-weight: 600; color: var(--txt); }
+    .lang-level { font-size: 0.68rem; color: var(--txt3); }
+    .lang-bar { height: 3px; background: rgba(255,255,255,0.07); border-radius: 2px; margin-top: 3px; overflow: hidden; }
+    .lang-fill { height: 100%; border-radius: 2px; background: var(--grad); }
 
-        /* Langues */
-        .lang-list { display: flex; flex-direction: column; gap: 7px; }
-        .lang-item { display: flex; flex-direction: column; gap: 3px; }
-        .lang-name { font-size: 0.78rem; font-weight: 600; color: #fff; }
-        .lang-level { font-size: 0.72rem; color: rgba(255,255,255,0.6); }
-        .lang-dots { display: flex; gap: 3px; margin-top: 2px; }
-        .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(79,156,249,0.3); }
-        .dot.on { background: var(--teal); }
+    /* Diplômes */
+    .dip-list { display: flex; flex-direction: column; gap: 5px; }
+    .dip-item {
+        font-size: 0.74rem; color: var(--txt2);
+        padding-left: 10px; position: relative; line-height: 1.4;
+    }
+    .dip-item::before {
+        content: ''; position: absolute; left: 0; top: 6px;
+        width: 4px; height: 4px; border-radius: 50%;
+        background: var(--a1);
+    }
+    .dip-item.highlight { color: var(--txt); font-weight: 500; }
 
-        /* Diplômes */
-        .diplome-list { display: flex; flex-direction: column; gap: 6px; }
-        .diplome-item {
-            font-size: 0.76rem;
-            color: rgba(255,255,255,0.82);
-            display: flex; align-items: flex-start; gap: 6px;
-        }
-        .diplome-item::before {
-            content: ''; width: 5px; height: 5px; border-radius: 50%;
-            background: var(--teal); flex-shrink: 0; margin-top: 5px;
-        }
+    /* ── MAIN ── */
+    .main { padding: 20px 24px; display: flex; flex-direction: column; gap: 18px; }
 
-        /* ── MAIN ─── */
-        .main { padding: 28px 28px 28px 24px; display: flex; flex-direction: column; gap: 20px; }
+    /* Section */
+    .sec-title {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 0.65rem; font-weight: 700;
+        letter-spacing: 2.5px; text-transform: uppercase;
+        color: var(--txt2); margin-bottom: 11px;
+        display: flex; align-items: center; gap: 9px;
+    }
+    .sec-title::after {
+        content: ''; flex: 1; height: 1px;
+        background: linear-gradient(90deg, rgba(79,156,249,0.3), transparent);
+    }
 
-        /* Header */
-        .header-name {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.9rem; font-weight: 800; line-height: 1.1;
-            color: var(--navy); letter-spacing: -0.5px;
-        }
-        .header-title {
-            font-size: 0.82rem; font-weight: 600; letter-spacing: 1.5px;
-            text-transform: uppercase; color: var(--teal); margin-top: 5px;
-        }
-        .header-schools {
-            display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px;
-        }
-        .school-badge {
-            font-size: 0.72rem; font-weight: 600;
-            padding: 3px 10px; border-radius: 20px;
-            background: rgba(79,156,249,0.1);
-            border: 1px solid rgba(79,156,249,0.3);
-            color: var(--navy);
-        }
+    /* Exp */
+    .exp-list { display: flex; flex-direction: column; gap: 12px; }
+    .exp-item {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 11px 14px;
+        position: relative;
+        overflow: hidden;
+    }
+    .exp-item::before {
+        content: ''; position: absolute;
+        left: 0; top: 0; bottom: 0; width: 3px;
+        background: var(--grad);
+    }
+    .exp-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+    .exp-title { font-size: 0.84rem; font-weight: 700; color: var(--txt); line-height: 1.2; }
+    .exp-date {
+        font-size: 0.68rem; font-weight: 600; color: var(--a1);
+        white-space: nowrap; padding: 2px 8px;
+        background: rgba(79,156,249,0.1);
+        border-radius: 10px; border: 1px solid rgba(79,156,249,0.2);
+        flex-shrink: 0;
+    }
+    .exp-org { font-size: 0.74rem; color: var(--txt2); margin-top: 3px; font-weight: 500; }
+    .exp-pts { margin-top: 7px; padding-left: 12px; display: flex; flex-direction: column; gap: 3px; }
+    .exp-pts li { font-size: 0.74rem; color: var(--txt2); list-style: none; position: relative; padding-left: 10px; }
+    .exp-pts li::before { content: '›'; position: absolute; left: 0; color: var(--a1); font-weight: 700; }
 
-        /* Section */
-        .section-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.72rem; font-weight: 700;
-            letter-spacing: 2px; text-transform: uppercase;
-            color: var(--navy2);
-            padding-bottom: 6px;
-            border-bottom: 2px solid var(--teal);
-            margin-bottom: 12px;
-        }
+    /* Edu */
+    .edu-list { display: flex; flex-direction: column; gap: 9px; }
+    .edu-item {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 10px 14px;
+        position: relative; overflow: hidden;
+    }
+    .edu-item::before {
+        content: ''; position: absolute;
+        left: 0; top: 0; bottom: 0; width: 3px;
+        background: linear-gradient(135deg, var(--a2), var(--a3));
+    }
+    .edu-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+    .edu-school { font-size: 0.84rem; font-weight: 700; color: var(--txt); }
+    .edu-date {
+        font-size: 0.68rem; font-weight: 600; color: #a78bfa;
+        white-space: nowrap; padding: 2px 8px;
+        background: rgba(124,58,237,0.1);
+        border-radius: 10px; border: 1px solid rgba(124,58,237,0.2);
+        flex-shrink: 0;
+    }
+    .edu-diploma { font-size: 0.78rem; font-weight: 600; color: var(--txt); margin-top: 3px; }
+    .edu-detail { font-size: 0.72rem; color: var(--txt2); margin-top: 3px; line-height: 1.45; }
 
-        /* Experience */
-        .exp-list { display: flex; flex-direction: column; gap: 13px; }
-        .exp-item { position: relative; padding-left: 14px; }
-        .exp-item::before {
-            content: ''; position: absolute; left: 0; top: 6px;
-            width: 7px; height: 7px; border-radius: 50%;
-            background: var(--teal);
-        }
-        .exp-header { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; }
-        .exp-title { font-size: 0.88rem; font-weight: 700; color: var(--navy); }
-        .exp-date { font-size: 0.72rem; font-weight: 600; color: var(--teal); white-space: nowrap; }
-        .exp-org { font-size: 0.78rem; font-weight: 500; color: var(--txt2); margin-top: 1px; }
-        .exp-pts { margin-top: 5px; padding-left: 12px; display: flex; flex-direction: column; gap: 2px; }
-        .exp-pts li { font-size: 0.78rem; color: var(--txt2); list-style: disc; }
+    /* ── PRINT ── */
+    @media print {
+        @page { size: A4; margin: 0; }
+        html { font-size: 8.5pt; }
+        body { background: var(--bg); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        .page { box-shadow: none; width: 100%; }
+    }
 
-        /* Formation */
-        .edu-list { display: flex; flex-direction: column; gap: 11px; }
-        .edu-item { position: relative; padding-left: 14px; }
-        .edu-item::before {
-            content: ''; position: absolute; left: 0; top: 6px;
-            width: 7px; height: 7px; border-radius: 50%;
-            background: var(--navy2); border: 2px solid var(--teal);
-        }
-        .edu-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; }
-        .edu-school { font-size: 0.88rem; font-weight: 700; color: var(--navy); }
-        .edu-date { font-size: 0.72rem; font-weight: 600; color: var(--teal); white-space: nowrap; }
-        .edu-diploma { font-size: 0.8rem; font-weight: 600; color: var(--txt); margin-top: 2px; }
-        .edu-detail { font-size: 0.76rem; color: var(--txt2); margin-top: 2px; }
-
-        /* ── PRINT ─── */
-        @media print {
-            @page { size: A4; margin: 0; }
-            body { background: white; }
-            .page { box-shadow: none; width: 100%; min-height: 100vh; }
-        }
-
-        @media screen {
-            body { background: var(--bg); padding: 20px; }
-        }
+    @media screen {
+        body { padding: 24px; }
+        .page { box-shadow: 0 0 60px rgba(79,156,249,0.15); border-radius: 4px; overflow: hidden; }
+    }
     </style>
 </head>
 <body>
 <div class="page">
 
-    <!-- ── SIDEBAR ── -->
-    <aside class="sidebar">
-
-        <div class="photo-wrap">
-            <img src="photo-pro.jpg" alt="Henzo Ho Foui Sang Lerandy">
-        </div>
-
-        <div>
-            <div class="s-section-title">Contact</div>
-            <div class="contact-list">
-                <div class="contact-item">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.1 2.82 2 2 0 012.11 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l.46-.46a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+    <!-- ── HEADER ── -->
+    <header class="cv-header">
+        <div class="header-inner">
+            <div class="header-left">
+                <div class="cv-name">Henzo Ho Foui<br>Sang Lerandy</div>
+                <div class="cv-title">Alternant Exploitation &amp; Maintenance Électrique</div>
+                <div class="school-pills">
+                    <span class="pill">✓ Polytech Montpellier — Génie Industriel</span>
+                    <span class="pill purple">✓ Polytech Nantes — Génie Électrique</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="contact-line">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.1 2.82 2 2 0 012.11 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l.46-.46a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
                     +594 694 96 37 52
                 </div>
-                <div class="contact-item">
+                <div class="contact-line">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                     h3nzo.hfsl@icloud.com
                 </div>
-                <div class="contact-item">
+                <div class="contact-line">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-                    linkedin.com/in/h3nzo-hfsl
+                    <a href="https://linkedin.com/in/h3nzo-hfsl">linkedin.com/in/h3nzo-hfsl</a>
                 </div>
-                <div class="contact-item">
+                <div class="contact-line">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-                    h3nz0o0.github.io/portfolio
+                    <a href="https://h3nz0o0.github.io/portfolio">h3nz0o0.github.io/portfolio</a>
                 </div>
-                <div class="contact-item">
+                <div class="contact-line">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                     Mobilité nationale
                 </div>
             </div>
         </div>
+    </header>
+
+    <!-- ── SIDEBAR ── -->
+    <aside class="sidebar">
 
         <div>
-            <div class="s-section-title">Profil</div>
+            <div class="s-title">Profil</div>
             <p class="profil-text">Fort de deux alternances sur sites industriels critiques et Sapeur-Pompier Volontaire, j'intègre le cycle ingénieur Polytech Montpellier Génie Industriel en 3ème année à la rentrée 2026. Finaliste des Olympiades FANUC Robotics, je cultive un goût prononcé pour les défis techniques et le travail collaboratif.</p>
         </div>
 
         <div>
-            <div class="s-section-title">Compétences</div>
+            <div class="s-title">Compétences</div>
             <div class="skill-list">
+                <div class="skill-cat">Programmation</div>
                 <div class="skill-item">C · LADDER · TPE · VHDL</div>
+                <div class="skill-cat">Électrique</div>
                 <div class="skill-item">Habilitations B1 B2 BR BC H0</div>
-                <div class="skill-item">LoRaWAN · GMAO · DOMMS</div>
+                <div class="skill-cat">Systèmes</div>
+                <div class="skill-item">GMAO · DOMMS · LoRaWAN</div>
+                <div class="skill-cat">Savoir-être</div>
                 <div class="skill-item">Leadership situationnel</div>
                 <div class="skill-item">Sang-froid opérationnel</div>
-                <div class="skill-item">Esprit critique & force de proposition</div>
+                <div class="skill-item">Force de proposition</div>
             </div>
         </div>
 
         <div>
-            <div class="s-section-title">Langues</div>
+            <div class="s-title">Langues</div>
             <div class="lang-list">
-                <div class="lang-item">
+                <div class="lang-row">
                     <div class="lang-name">Français</div>
                     <div class="lang-level">Langue maternelle</div>
-                    <div class="lang-dots">
-                        <div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div>
-                    </div>
+                    <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
                 </div>
-                <div class="lang-item">
+                <div class="lang-row">
                     <div class="lang-name">Anglais</div>
                     <div class="lang-level">Niveau C1</div>
-                    <div class="lang-dots">
-                        <div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div>
-                    </div>
+                    <div class="lang-bar"><div class="lang-fill" style="width:80%"></div></div>
                 </div>
-                <div class="lang-item">
+                <div class="lang-row">
                     <div class="lang-name">Mandarin</div>
                     <div class="lang-level">Débutant</div>
-                    <div class="lang-dots">
-                        <div class="dot on"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
-                    </div>
+                    <div class="lang-bar"><div class="lang-fill" style="width:15%"></div></div>
                 </div>
             </div>
         </div>
 
         <div>
-            <div class="s-section-title">Diplômes</div>
-            <div class="diplome-list">
-                <div class="diplome-item">BUT GEII — en cours d'obtention</div>
-                <div class="diplome-item">Baccalauréat Général — Mention Très Bien</div>
-                <div class="diplome-item">FCIL Robotique niveaux 1 &amp; 2</div>
-                <div class="diplome-item">Brevet National Jeune Sapeur-Pompier</div>
-                <div class="diplome-item">Permis B</div>
+            <div class="s-title">Diplômes</div>
+            <div class="dip-list">
+                <div class="dip-item highlight">BUT GEII — en cours</div>
+                <div class="dip-item">Bac Général — Mention TB</div>
+                <div class="dip-item">FCIL Robotique niveaux 1 &amp; 2</div>
+                <div class="dip-item">Brevet National JSP</div>
+                <div class="dip-item">Permis B</div>
             </div>
         </div>
 
@@ -288,64 +330,40 @@
     <!-- ── MAIN ── -->
     <main class="main">
 
-        <!-- Header -->
         <div>
-            <div class="header-name">Henzo<br>Ho Foui Sang Lerandy</div>
-            <div class="header-title">Alternant Exploitation &amp; Maintenance Électrique</div>
-            <div class="header-schools">
-                <span class="school-badge">✓ Polytech Montpellier — Génie Industriel</span>
-                <span class="school-badge">✓ Polytech Nantes — Génie Électrique</span>
-            </div>
-        </div>
-
-        <!-- Expériences -->
-        <div>
-            <div class="section-title">Expériences professionnelles</div>
+            <div class="sec-title">Expériences professionnelles</div>
             <div class="exp-list">
 
                 <div class="exp-item">
-                    <div class="exp-header">
+                    <div class="exp-head">
                         <div class="exp-title">Alternant Exploitation et Maintenance Électrique</div>
-                        <div class="exp-date">Depuis avril 2026</div>
+                        <div class="exp-date">Depuis avr. 2026</div>
                     </div>
                     <div class="exp-org">IDEX Space · Centre Hospitalier de l'Ouest Guyanais &amp; Centre Spatial Guyanais</div>
                     <ul class="exp-pts">
-                        <li>Rédaction et correction des procédures de consignation haute tension (HT)</li>
-                        <li>Exploitation et maintenance des installations HT et CVC sur site hospitalier critique</li>
-                        <li>Mise en service du logiciel DOMMS Ronde : tests, débogage, formation des équipes et interface avec l'éditeur Olivatech</li>
-                        <li>Participation à la réponse aux appels d'offres sur le Centre Spatial Guyanais</li>
+                        <li>Rédaction et correction des procédures de consignation haute tension</li>
+                        <li>Exploitation et maintenance des installations HT et CVC</li>
+                        <li>Mise en service du logiciel DOMMS Ronde : tests, débogage, formation équipes, interface éditeur Olivatech</li>
+                        <li>Participation aux appels d'offres sur le Centre Spatial Guyanais</li>
                     </ul>
                 </div>
 
                 <div class="exp-item">
-                    <div class="exp-header">
+                    <div class="exp-head">
                         <div class="exp-title">Assistant Responsable d'Exploitation</div>
                         <div class="exp-date">Oct. 2024 – Mars 2026</div>
                     </div>
                     <div class="exp-org">IDEX Biomasse Énergie Montsinéry — Centrale 20 MWth / 5 MWe</div>
                     <ul class="exp-pts">
                         <li>Supervision de la centrale biomasse et suivi des KPI de production</li>
-                        <li>Planification et coordination de la maintenance préventive et curative, initiation GMAO</li>
+                        <li>Planification de la maintenance préventive et curative, initiation GMAO</li>
                         <li>Création du tableau de suivi des maintenances et du fichier de demande d'interventions</li>
                         <li>Rédaction de procédures de conduite et formation des équipes aux EPI</li>
-                        <li>Gestion de l'inventaire du site</li>
                     </ul>
                 </div>
 
                 <div class="exp-item">
-                    <div class="exp-header">
-                        <div class="exp-title">Sapeur-Pompier Volontaire</div>
-                        <div class="exp-date">Depuis mai 2026</div>
-                    </div>
-                    <div class="exp-org">SDIS Guyane — Centre de Secours de Matoury</div>
-                    <ul class="exp-pts">
-                        <li>Vérification des engins et du matériel d'intervention avant chaque prise de garde</li>
-                        <li>Interventions d'urgence en équipe (incendie, secours à personnes)</li>
-                    </ul>
-                </div>
-
-                <div class="exp-item">
-                    <div class="exp-header">
+                    <div class="exp-head">
                         <div class="exp-title">Finaliste — Olympiades FANUC Robotics</div>
                         <div class="exp-date">11 &amp; 12 mars 2025</div>
                     </div>
@@ -353,41 +371,51 @@
                     <ul class="exp-pts">
                         <li>Montage de la cellule robotique : préhenseurs, capteurs, raccordements pneumatiques</li>
                         <li>Programmation TPE sur robot industriel FANUC en conditions de compétition</li>
-                        <li>Adaptation de la solution en temps réel aux contraintes imposées</li>
                     </ul>
                 </div>
 
                 <div class="exp-item">
-                    <div class="exp-header">
+                    <div class="exp-head">
+                        <div class="exp-title">Sapeur-Pompier Volontaire</div>
+                        <div class="exp-date">Depuis mai 2026</div>
+                    </div>
+                    <div class="exp-org">SDIS Guyane — Centre de Secours de Matoury</div>
+                    <ul class="exp-pts">
+                        <li>Vérification des engins et matériels d'intervention avant chaque garde</li>
+                        <li>Interventions d'urgence en équipe (incendie, secours à personnes)</li>
+                    </ul>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-head">
                         <div class="exp-title">Jeune Sapeur-Pompier</div>
                         <div class="exp-date">2019 – 2022</div>
                     </div>
                     <div class="exp-org">SDIS Guyane — Centre de Secours de Matoury</div>
                     <ul class="exp-pts">
                         <li>Secourisme et manœuvre incendie</li>
-                        <li>Travail en équipe, respect de la hiérarchie, rigueur et discrétion</li>
+                        <li>Rigueur, respect de la hiérarchie, travail en équipe</li>
                     </ul>
                 </div>
 
             </div>
         </div>
 
-        <!-- Formation -->
         <div>
-            <div class="section-title">Formation</div>
+            <div class="sec-title">Formation</div>
             <div class="edu-list">
 
                 <div class="edu-item">
-                    <div class="edu-header">
+                    <div class="edu-head">
                         <div class="edu-school">IUT de Kourou</div>
                         <div class="edu-date">Sept. 2023 – Août 2026</div>
                     </div>
                     <div class="edu-diploma">BUT Génie Électrique et Informatique Industrielle</div>
-                    <div class="edu-detail">Automatisme, automatique, maintenance, systèmes embarqués, électronique, robotique, électrotechnique, énergie et management.</div>
+                    <div class="edu-detail">Automatisme, maintenance, systèmes embarqués, électronique, robotique, électrotechnique, énergie et management.</div>
                 </div>
 
                 <div class="edu-item">
-                    <div class="edu-header">
+                    <div class="edu-head">
                         <div class="edu-school">Lycée Léon-Gontran DAMAS</div>
                         <div class="edu-date">Sept. 2020 – Juin 2023</div>
                     </div>
